@@ -14,26 +14,37 @@
             <p>  Enter your student details below ! </p>
 
             <form action="../form_processing/signup_fp.php" method="POST">
-                  <label for="Fname">FirstName</label>
+                  <label for="Fname">First Name</label>
                   <input type="text" id="Fname" name="Fname" placeholder="...">
                   </br>
 
                   </br>
-                  <label for="Lname">LastName</label>
+                  <label for="Lname">Last Name</label>
                   <input type="text" id="Lname" name="Lname" placeholder="...">
                   </br>
 
                   </br>
-                  <label for="StudentNumber">StudentNumber</label>
+                  <label for="StudentNumber">Student Number</label>
                   <input type="text" id="StudentNumber" name="StudentNumber" placeholder="...">
                   </br>
 
                   </br>
-                  <label for="Password">Password</label>
-                  <input type="text" id="Password" name="Password" placeholder="...">
+                  <label for="Username">Username</label>
+                  <input type="text" id="Username" name="Username" placeholder="...">
+                  </br>
 
                   </br>
-                  <input type="submit" value="submit">
+                  <label for="Password">Password</label>
+                  <input type="text" id="Password" name="Password" placeholder="8 characters">
+                  </br>
+
+                  </br>
+                  <label for="confPwd">Confirm Password</label>
+                  <input type="text" id="confPwd" name="confPwd" placeholder="...">
+                  </br>
+
+                  </br>
+                  <input type="submit" name="submit">
             </form>
       </body>
 </html>

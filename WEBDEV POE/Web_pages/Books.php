@@ -29,14 +29,15 @@
                         //The loop uses html and css to display every book in the table.
                         while (($Row = mysqli_fetch_row($selectQueryResult)) !== null)
                         {
-                              echo '<div class="grid-item">';
-                              echo '<div class="book-title">Title: ' .$Row[0] . '</div>';
-                              echo '<div class="book-price">R '. $Row[5]. '</div>';
-                              echo '<div class="book-image">';
+                              echo '<div>';
+                              echo '<div>Title: ' .$Row[0] . '</div>';
+                              echo '<div>R '. $Row[5]. '</div>';
+                              echo '<div>';
                               echo '<img src='. $Row[7] . ' width="150" height="200">';
                               echo '</div>';
                               echo "<div>
-                                          <button id='atc-btn' class='menu-btn'>Add to cart</button>
+                                          <button id='msg-seller'>Contact seller</button>
+                                          <button id='atc-btn'>Add to cart</button>
                                     </div>";
                               echo '</div>';
                         }
