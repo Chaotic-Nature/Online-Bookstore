@@ -1,4 +1,7 @@
-
+<?php 
+      include('./Database_files/CreateTable.php'); 
+      include('./Database_files/LoadBookStore.php');
+?>
 <html>
       <head>
             <title> Ebook Store Home </title>
@@ -8,10 +11,10 @@
               <ul>
 
                     <li> <a href="Index.php"> Home </a> </li>
-                    <li> <a href="About.php"> About </a> </li>
-                    <li> <a href="Books.php"> Books for sale! </a> </li>
-                    <li> <a href="Sell.php"> Sell your books here! </a> </li>
-                    <li> <a href="Login.php"> Login/Signup </a> </li>
+                    <li> <a href="./Web_pages/About.php"> About </a> </li>
+                    <li> <a href="./Web_pages/Books.php"> Books for sale! </a> </li>
+                    <li> <a href="./Web_pages/Sell.php"> Sell your books here! </a> </li>
+                    <li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>
 
              </ul>
               <h1> Welcome to Ebookstore! </h1>

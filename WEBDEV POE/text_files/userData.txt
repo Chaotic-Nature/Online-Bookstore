@@ -1,0 +1,5 @@
+Cibrian,Hofsta,ST10101076,cibby458,hofstacibrian@gmail.com,$2y$10$qAtt5rgXv1V1E20P0NA/qOYSMjcFO15V/C0Go86aWYF...,
+Aphiwe,Jackson,ST10101069,jjackson5,jasJack@gmail.com,$2y$10$qAtt5rgXv1V1E20P0NA/qOYSMjcFO15V/C0Go86aWYF...,
+Gareth,Parker,ST10101035,parkerPete,spooderman@gmail.com,$2y$10$qAtt5rgXv1V1E20P0NA/qOYSMjcFO15V/C0Go86aWYF...,
+Bruce,Wayne,ST10101022,batman69,thebat@gmail.com,$2y$10$qAtt5rgXv1V1E20P0NA/qOYSMjcFO15V/C0Go86aWYF...,
+Clarke,Kent,ST10101056,superman,manOfSteel@gmail.com,$2y$10$qAtt5rgXv1V1E20P0NA/qOYSMjcFO15V/C0Go86aWYF...,

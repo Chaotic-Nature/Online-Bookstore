@@ -1,0 +1,5 @@
+John,Wick,AD123456,babayega,wickJohn@gmail.com,password,
+Mark,Greyson,AD234567,invincible,greysonMark@gmail.com,password,
+Wanda,Maximoff,AD246810,scarletWitch,maximoffWanda@gmail.com,password,
+Natasha,Romanoff,AD135791,blackWidow,romanoffNat@gmail.com,password,
+Gumball,Waterson,AD458973,gumball,watersonG@gmail.com,password,
