@@ -1,6 +1,6 @@
 <?php 
       include('./Database_files/CreateTable.php'); 
-      include('./Database_files/LoadBookStore.php');
+      include_once('./Database_files/LoadBookStore.php');
 ?>
 <html>
       <head>

@@ -9,7 +9,7 @@ $tableOrders = "tblOrders";
 $adminQuery = "CREATE TABLE $tableAdmin (
                 AD_fName VARCHAR(20),AD_lName VARCHAR(20),
                 AD_num VARCHAR(10), AD_username VARCHAR(20),
-                 AD_email VARCHAR(25), AD_pwd VARCHAR(50));";
+                 AD_email VARCHAR(25), AD_pwd VARCHAR(255));";
 //Books table.
 $booksTableQuery = "CREATE TABLE $tableBooks (
                 title VARCHAR(100), author VARCHAR(30), 

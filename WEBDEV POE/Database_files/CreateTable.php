@@ -7,12 +7,11 @@ include ("DBConn.php");
 
 $tblUserQuery = "CREATE TABLE tblUser (fName VARCHAR(20), 
                 lName VARCHAR(20), studNum VARCHAR(10), 
-                username VARCHAR(20), userEmail VARCHAR(25),
-                pwd VARCHAR(255))";
+                username VARCHAR(20), pwd VARCHAR(255))";
 
 checkTableExistence("tblUser", $tblUserQuery);
-loadTextData("LOAD DATA LOCAL INFILE 
-    'text_files/userData.txt'
+
+loadTextData("LOAD DATA LOCAL INFILE 'text_files/userData.txt'
     INTO TABLE tblUser FIELDS TERMINATED BY ','");
 
 function checkTableExistence($tableName, $createTableQuery){

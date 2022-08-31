@@ -17,18 +17,22 @@
               <h1> Login to get started! </h1>
               <p>  Are you a new student looking to sign up? <a href="Signup.php"> click here</a> </br>
               for admin login <a href="AdminLogin.php">click here</a> </p>
-<form>
+<form action="../form_processing/user_login_fp.php" method="POST">
 
 <label for="StudentNumber">Student Number</label>
 <input type="text" id="StudentNumber" name="StudentNumber" placeholder="...">
 </br>
 
 </br>
-<label for="Password">Password</label>
-<input type="text" id="Password" name="Password" placeholder="...">
+<label for="username">Username</label>
+<input type="text" id="username" name="username" placeholder="...">
 
 </br>
- <input type="submit"> 
+<label for="Password">Password</label>
+<input type="password" id="Password" name="Password" placeholder="...">
+
+</br>
+ <input type="submit" name="submit"> 
 
 </form>
 

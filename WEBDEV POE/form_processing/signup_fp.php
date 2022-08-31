@@ -15,10 +15,6 @@ if(isset($_POST['submit']))
         header("location: ../Web_pages/Signup.php?error=emptyInput");
         exit();
     }
-    /*if (invalidStudNum($studNum) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=invalidStudnum");
-        exit();
-    }*/
     if(samePassword($pwd, $confPwd) !== FALSE){
         header("location: ../Web_pages/Signup.php?error=passwordMismatch");
         exit();
@@ -36,7 +32,7 @@ if(isset($_POST['submit']))
         exit();
     }
 
-//createUser($DBConn, $fName, $LName, $studNum, $username, $pwd);
+    createUser($DBConn, $fName, $LName, $studNum, $username, $pwd);
 
 
 }

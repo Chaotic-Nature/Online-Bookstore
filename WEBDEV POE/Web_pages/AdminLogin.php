@@ -16,7 +16,7 @@
              </ul>
               <h1> Welcome to the Admin only Page! </h1>
               <p>  Are you really an admin or are you just snooping around! Find out by logging in below! </p>
-<form>
+<form action="../form_processing/admin_login_fp.php" method="POST" >
 
 <label for="Username">Username</label>
 <input type="text" id="Username" name="Username" placeholder="...">
@@ -24,10 +24,10 @@
 
 </br>
 <label for="Password">Password</label>
-<input type="text" id="Password" name="Password" placeholder="...">
+<input type="password" id="Password" name="Password" placeholder="...">
 
 </br>
-<input type="submit">
+<input type="submit" name="submit">
 
 </form>
 
