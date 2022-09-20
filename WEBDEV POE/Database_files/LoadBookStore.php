@@ -7,20 +7,26 @@ $tableOrders = "tblOrders";
 //Queries to create tables in bookstore.
 //Admin table.
 $adminQuery = "CREATE TABLE $tableAdmin (
-                AD_fName VARCHAR(20),AD_lName VARCHAR(20),
-                AD_num VARCHAR(10), AD_username VARCHAR(20),
-                 AD_email VARCHAR(25), AD_pwd VARCHAR(255));";
+    AD_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    AD_fName VARCHAR(20),AD_lName VARCHAR(20),
+    AD_num VARCHAR(10), AD_username VARCHAR(20),
+    AD_email VARCHAR(25), AD_pwd VARCHAR(255));"
+;
 //Books table.
 $booksTableQuery = "CREATE TABLE $tableBooks (
-                title VARCHAR(100), author VARCHAR(30), 
-                ed VARCHAR(4), cate VARCHAR(8), 
-                cond VARCHAR(13), price VARCHAR(10), 
-                descript VARCHAR(150), img1 VARBINARY(255));";
+    bookID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100), author VARCHAR(30), 
+    ed VARCHAR(4), cate VARCHAR(8), 
+    cond VARCHAR(13), price VARCHAR(10), 
+    descript VARCHAR(150), img1 VARBINARY(255));"
+;
 //Order table
 $orderTableQuery = "CREATE TABLE $tableOrders (
-                title VARCHAR(30), author VARCHAR(30), 
-                ed VARCHAR(4), categor VARCHAR(8), 
-                price VARCHAR(10), deliveryDate DATE);";
+    order_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    userID INT NOT NULL REFERENCES tblUser(userID),
+    bookID INT NOT NULL REFERENCES tblBooks(bookID), 
+    deliveryDate DATE);"
+;
 
 /*This method checks if a table exists, deletes it if
 it does, and recreates it with the dummy text file data. 

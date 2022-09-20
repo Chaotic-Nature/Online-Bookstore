@@ -11,9 +11,9 @@ function loadTextData($loadDataQuery)
 
 //      **SIGNUP FUNCTIONS**      //
 
-function isEmpty($Fname, $Lname, $studNum, $username, $pwd, $confPwd)
+function isEmpty($Fname, $Lname, $studNum, $username, $email, $pwd, $confPwd)
 {
-    if(empty($Fname) || empty($Lname) || empty($studNum) || empty($username) || empty($pwd) || empty($confPwd)){
+    if(empty($Fname) || empty($Lname) || empty($studNum) || empty($username) || empty($email) || empty($pwd) || empty($confPwd)){
         $result = true;
     }
     else{
@@ -86,9 +86,19 @@ function usernameExists($DBConn, $username)
     mysqli_stmt_close($stmt);
 }
 
-function createUser($DBConn, $Fname, $Lname, $studNum, $username, $pwd)
+function invalidEmail($email){
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
 {
-    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, pwd) VALUES (?, ?, ?, ?, ?);";
+    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
         header("location: ../Web_pages/Signup.php?error=createstmntFailed");
@@ -96,9 +106,12 @@ function createUser($DBConn, $Fname, $Lname, $studNum, $username, $pwd)
     }
     else{
         $hashedPWD = password_hash($pwd, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "sssss", $Fname, $Lname, $studNum, $username, $hashedPWD);
+        mysqli_stmt_bind_param($stmt, "ssssss", $Fname, $Lname, $studNum, $username, $email, $hashedPWD);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
+        $myfile = fopen("../text_files/userData.txt", "a") or die("Unable to open file!");
+        fwrite($myfile, "\n ,$Fname,$Lname,$studNum,$username,$email,$hashedPWD,");
+        fclose($myfile);
         header("location: ../Web_pages/Signup.php?AccountCreationSuccessful");
         exit();  
     }
@@ -131,7 +144,7 @@ function loginUser($DBConn, $studentNum, $password){
     else if($passwordCheck === TRUE){
         session_start();
         $_SESSION['studNum'] = $userExists['studNum'];
-        header("location: ../Index.php");
+        header("location: ../Index.php?UserLoginSuccessful");
         exit();
     }
 }
@@ -183,7 +196,7 @@ function loginAdmin($DBConn, $username, $password){
     else if($passwordCheck === TRUE){
         session_start();
         $_SESSION['AD_num'] = $userExists['AD_num'];
-        header("location: ../Index.php");
+        header("location: ../Index.php?LoggedInAsAdmin");
         exit();
     }
 }

@@ -5,9 +5,11 @@ include('./inc_files/functions.php');
 //Including the file containing database connection.
 include ("DBConn.php");
 
-$tblUserQuery = "CREATE TABLE tblUser (fName VARCHAR(20), 
-                lName VARCHAR(20), studNum VARCHAR(10), 
-                username VARCHAR(20), pwd VARCHAR(255))";
+$tblUserQuery = "CREATE TABLE tblUser (
+    userID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    fName VARCHAR(20), lName VARCHAR(20), studNum VARCHAR(10), 
+    username VARCHAR(20), email VARCHAR (30), pwd VARCHAR(255))"
+;
 
 checkTableExistence("tblUser", $tblUserQuery);
 

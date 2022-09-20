@@ -8,10 +8,11 @@ if(isset($_POST['submit']))
     $LName = $_POST['Lname'];
     $studNum = $_POST['StudentNumber'];
     $username = $_POST['Username'];
+    $email = $_POST['email'];
     $pwd = $_POST['Password'];
     $confPwd = $_POST['confPwd'];
 
-    if(isEmpty($fName, $LName, $studNum, $username, $pwd, $confPwd) !== FALSE){
+    if(isEmpty($fName, $LName, $studNum, $username, $email, $pwd, $confPwd) !== FALSE){
         header("location: ../Web_pages/Signup.php?error=emptyInput");
         exit();
     }
@@ -31,8 +32,12 @@ if(isset($_POST['submit']))
         header("location: ../Web_pages/Signup.php?error=usernameExists");
         exit();
     }
+    if(invalidEmail($email) !== FALSE){
+        header("location: ../Web_pages/Signup.php?error=usernameExists");
+        exit();
+    }
 
-    createUser($DBConn, $fName, $LName, $studNum, $username, $pwd);
+    createUser($DBConn, $fName, $LName, $studNum, $username, $email, $pwd);
 
 
 }
