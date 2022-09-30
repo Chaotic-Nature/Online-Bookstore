@@ -1,1 +1,0 @@
- ,$Fname, $Lname, $studNum, $username, $email, $hashedPWD ,$Fname, $Lname, $studNum, $username, $email, $hashedPWD ,ethan, hofsta, ST111111, ethyG, hofstacibrian3@gmail.com, $2y$10$hBD712gHw0eaWW2hDwR0RuhM/7M8g6r9YNe/aSM6P1ImiINA0RJmy
