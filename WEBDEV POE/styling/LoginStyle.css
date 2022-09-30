@@ -1,41 +1,111 @@
-.login-box {
-    max-width: 700px;
-    float: none;
-    margin: 1px auto;
-}
-.login-left {
-    background: rgba(211, 211, 211, 0.5);
-    padding: 30px;
-}
-.login-right {
-    background: #fff;
-    padding: 30px;
-}
-.form-control{
-    background-color: transparent !important;
-}
-
-a {
-    color:#fff !important;
-    margin-top: -200px !important;
-}
-
-h1 {
-    color:#fff !important;
-    margin-top: 200px !important;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 *{
     margin: 0;
     padding: 0;
 }
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url('../images/the-books.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 20px 20px 20px 450px;
+    background: #fff;
+    overflow: hidden;
+}
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    /**box-shadow: 0 0 20px 9px #ff61241f;*/ /** for colour around da box*/
+    border-radius: 30px;
+}
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #e60909fd, #242020fd);
+    border-radius: 30px;
+    transition: .5s;
+}
+.user-instructions {
+    margin: 30px auto;
+    text-align: center;
+}
+.input-group {
+    top: 160px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;                                                                                                                               
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 2px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid red;
+    outline: none;
+    
+    background-color: transparent !important;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin:10px 20px 30px 25px;
+    background: linear-gradient(to right, #e60909fd, #242020fd);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.chech-box {
+    margin: 30px 10px 30px 0;
+}
+
+.span {
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
+}
+
+/** For the menu */
+
+
 body {
     font-family:  Verdana, sans-serif;;
     color: white;
 }
-.header {
+/**.header {
     min-height: 100vh;
     width: 100%;
     background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url('../images/the-books.jpg');
@@ -43,7 +113,7 @@ body {
     background-position: center;
     background-size: cover;
     position: relative;
-}
+}*/
 html {
     scroll-behavior:smooth;
 }
@@ -56,7 +126,7 @@ font-weight: bold;
 }
 nav {
     display: flex;
-    padding: 2% 6%;
+    padding: 1% 5%;
     justify-content: space-between;
     align-items: center;
 }
@@ -95,7 +165,13 @@ nav {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+.text-box h1 {
+    font-size: 30px;
+}
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+}
 .visit-btn {
     display: inline-block;
     text-decoration: none;
@@ -152,6 +228,10 @@ nav .fa {
 }
 }
 
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
 p {
     color: #888;
     font-size: 14px;
@@ -175,7 +255,6 @@ h2 {
     font-weight: 600;
     margin: 10px 0;
 }
-
 @media(max-width: 700px) {
     .row {
         flex-direction: column;
@@ -184,47 +263,22 @@ h2 {
             font-size: 11px;
         }
     }
+.about-us {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.footer {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
 
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-input[type=email], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-input[type=number], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-input[type=submit] {
-background-color: #04AA6D;
-color: white;
-padding: 12px 20px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-input[type=submit]:hover {
-    background-color: #45a049;
-}
 
 

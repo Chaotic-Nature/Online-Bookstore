@@ -8,10 +8,10 @@
             <section class ="header">
                   <section id="home">
                         <nav>
-                              <input type="checkbox" id="check">
+                             <!-- <input type="checkbox" id="check">
                               <label for ="check" class="checkbtn">
                                     <i class="fas fa-bars"></i>
-                              </label>
+                              </label> -->
                               <label class = "logo">
                                     <b>EBookStore</b>
                               </label>
