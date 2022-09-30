@@ -49,7 +49,7 @@ function studNumExists($DBConn, $studentNum)
     $sqlQuery = "SELECT * FROM tblUser WHERE studNum = ?;";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
-        header("location: ../Web_pages/Signup.php?error=statementFailed");
+        header("location: ../Web_pages/Login.php?error=statementFailed");
         exit();
     }
     mysqli_stmt_bind_param($stmt, "s", $studentNum);
@@ -70,7 +70,7 @@ function usernameExists($DBConn, $username)
     $sqlQuery = "SELECT * FROM tblUser WHERE username = ?;";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
-        header("location: ../Web_pages/Signup.php?error=usernamestatementFailed");
+        header("location: ../Web_pages/Login.php?error=usernamestatementFailed");
         exit();
     }
     mysqli_stmt_bind_param($stmt, "s", $username);
@@ -101,7 +101,7 @@ function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
     $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
-        header("location: ../Web_pages/Signup.php?error=createstmntFailed");
+        header("location: ../Web_pages/Login.php?error=createstmntFailed");
         exit();
     }
     else{
@@ -112,7 +112,7 @@ function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
         $myfile = fopen("../text_files/userData.txt", "a") or die("Unable to open file!");
         fwrite($myfile, "\n ,$Fname,$Lname,$studNum,$username,$email,$hashedPWD,");
         fclose($myfile);
-        header("location: ../Web_pages/Signup.php?AccountCreationSuccessful");
+        header("location: ../Web_pages/Login.php?AccountCreationSuccessful");
         exit();  
     }
     
@@ -195,7 +195,7 @@ function loginAdmin($DBConn, $username, $password){
     }
     else if($passwordCheck === TRUE){
         session_start();
-        $_SESSION['AD_num'] = $userExists['AD_num'];
+        $_SESSION['AD_num'] = $adminExists['AD_num'];
         header("location: ../Index.php?LoggedInAsAdmin");
         exit();
     }

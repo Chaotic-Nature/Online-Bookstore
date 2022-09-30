@@ -13,27 +13,27 @@ if(isset($_POST['submit']))
     $confPwd = $_POST['confPwd'];
 
     if(isEmpty($fName, $LName, $studNum, $username, $email, $pwd, $confPwd) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=emptyInput");
+        header("location: ../Web_pages/Login.php?error=emptyInput");
         exit();
     }
     if(samePassword($pwd, $confPwd) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=passwordMismatch");
+        header("location: ../Web_pages/Login.php?error=passwordMismatch");
         exit();
     }
     if(passwordLength($pwd) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=passwordLength");
+        header("location: ../Web_pages/Login.php?error=passwordLength");
         exit();
     }
     if(studNumExists($DBConn, $studNum) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=studNumExists");
+        header("location: ../Web_pages/Login.php?error=studNumExists");
         exit();
     }
     if(userNameExists($DBConn, $username) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=usernameExists");
+        header("location: ../Web_pages/Login.php?error=usernameExists");
         exit();
     }
     if(invalidEmail($email) !== FALSE){
-        header("location: ../Web_pages/Signup.php?error=usernameExists");
+        header("location: ../Web_pages/Login.php?error=usernameExists");
         exit();
     }
 

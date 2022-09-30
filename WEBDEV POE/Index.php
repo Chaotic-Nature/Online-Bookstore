@@ -128,8 +128,7 @@
                             </div>
                             
                               <?php 
-                                    include("Database_files/DBConn.php");//Connecting to the database.
-
+                                    include_once('./Database_files/DBConn.php');
                                     $selectQuery = "SELECT * FROM tblBooks;";
                                     $selectQueryResult = mysqli_query($DBConn, $selectQuery);//Selecting the books table.
                                     if ($selectQueryResult === FALSE)

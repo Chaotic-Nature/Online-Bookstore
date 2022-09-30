@@ -36,7 +36,7 @@
                     <input type="text" id="username" name="username" class="input-field" placeholder="Enter Username" required>
                     <input type="password" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
                     
-                    <button type="submit" style="color:aliceblue" class= "submit-btn">Login</button>
+                    <button type="submit" style="color:aliceblue" class= "submit-btn" name="submit">Login</button>
                     <!-- original <input type="submit" value="Login" class="btn btn-primary" name="submit"> -->
 
                 </form>
@@ -55,12 +55,14 @@
                 <input type="text" id="Username" name="Username" class="input-field" placeholder="Enter Username" required>
                 <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
 
+                <input type="email" id="email" name="email" class="input-field" placeholder="Enter Email" required>
+
                 <input type="text" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
                 <!--<input type="text" class="input-field" placeholder="Enter Password" required>-->
 
                 <input type="text" id="confPwd" name="confPwd" class="input-field" placeholder="Confirm Password" required>
                     
-                <button type="submit" style="color:aliceblue" class= "submit-btn">Register</button>
+                <button type="submit" style="color:aliceblue" class= "submit-btn" name="submit">Register</button>
                 </form>
 
                 <!-- original login page -->
