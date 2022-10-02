@@ -25,7 +25,7 @@
                               </div>
                               <i class ="fa fa-bars" onclick="showMenu()"></i>
                         </nav>
-                        <h1> Ready to sell some books? </h1>
+                        <h1> Ready to sell some books pensis i? </h1>
                   </section>
             </section>
       </body>

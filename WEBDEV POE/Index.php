@@ -10,10 +10,15 @@
         <title> EBookStore.com </title>
 
         <link rel = "stylesheet" href="styling/style.css">
+        <!-- FONT -->
         <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- SEARCH/FONT -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        
         <!-- THE ICONS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     </head>
     <body style="font-family : Verdana, sans-serif">
         <!--HOME PAGE-->
@@ -24,6 +29,7 @@
                         <label for ="check" class="checkbtn">
                             <i class="fas fa-bars"></i>
                         </label> -->
+                        
                         <label class = "logo">
                             <b>EBookStore</b>
                         </label>   
@@ -44,7 +50,7 @@
                     <div class ="text-box">
                         <h1><b> Welcome To EBookStore </b></h1>
                         <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks</p>
-                        <a href= "./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>
+                        <a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>
                     </div>
                 </section>
             </section>
@@ -56,7 +62,7 @@
             <i class="fas fa-plane"></i>
 
                 <div class="content">
-                <h3>Free Shipping</h3>
+                <h3><b>Free Shipping</b></h3>
                 <p>Order's Over R300 Are Free</p>
                 </div>
 
@@ -67,7 +73,7 @@
             <i class="fas fa-lock"></i>
 
                 <div class="content">
-                <h3>Secure Payment</h3>
+                <h3><b> Secure Payment </b></h3>
                 <p>100% Secure Payments</p>
                 </div>
                 
@@ -78,7 +84,7 @@
             <i class="fas fa-redo-alt"></i>
 
                 <div class="content">
-                <h3>Easy Returns</h3>
+                <h3><b>Easy Returns</b></h3>
                 <p>Return Within 10 Days</p>
                 </div>
                 
@@ -89,7 +95,7 @@
             <i class="fas fa-headset"></i>
 
                 <div class="content">
-                <h3>24/7 Customer Support</h3>
+                <h3><b>24/7 Customer Support</b></h3>
                 <p>Call Us Anytime</p>
                 </div>
                 
@@ -161,9 +167,6 @@
             <section class="about-us">
                 <section id="About">
                     <h1>About Us</h1>
-                    <div class="icon">
-                    <div id="search-btn" class="fas fa-search"></div>
-                    <a href="#" class="fas fa-shopping"></a>
                     <p>Ebook store was established in the cold winter of the year 2022 by 3 disguished gentlemen, Cibbs , AP and Sir Gareth thee End.</p>
                     <h2> Contact Us </h2>
                     <p>

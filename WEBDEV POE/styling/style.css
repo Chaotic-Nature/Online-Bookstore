@@ -1,6 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+    transition: width none;
 }
 body {
     font-family:  Verdana, sans-serif;;
@@ -60,7 +66,7 @@ nav {
 }
 .text-box {
     width: 90%;
-    color: white;
+    color:white;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -73,6 +79,7 @@ nav {
 .text-box p {
     margin: 10px 0 40px;
     font-size: 14px;
+    color: white;
 }
 .visit-btn {
     display: inline-block;
@@ -86,9 +93,12 @@ nav {
     cursor: pointer;
 }
 .visit-btn:hover {
-    border: 1px solid red; 
+    border: 1px solid red;
     background: red;
     transition: 1s;      
+}
+.text-box a:hover {
+    color: white;
 }
 nav .fa {
     display:none;
@@ -139,16 +149,9 @@ nav .fa {
     border-radius: .5rem;
     
 }
-h1 {
+.book-section h1 {
     font-size: 36px;
     font-weight: 600;
-}
-p {
-    color: #888;
-    /**font-size: 14px;
-    font-weight: 300;
-    line-height: 22px;
-    padding: 10px;*/
 }
 .row {
     margin-top: 5%;
@@ -198,13 +201,33 @@ h2 {
     border-radius: .5rem;
 }
 */
-
+.AdminIntro {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
 /** about us section */
 .about-us {
     width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 50px;
+}
+.about-us h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+.about-us h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+.about-us p {
+    color: #888;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
 }
 .footer {
     width: 100%;
@@ -276,34 +299,34 @@ input[type=submit]:hover {
     width: 100%;
     position: absolute;
 }
-
 .icons-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 15px;
+    margin: 20px 10px 10px 10px;
 }
 
 .icons-container .icons {
     display: flex;
     align-items: center;
     gap:1.5rem;
-    padding:2rem 0;
+    padding:20px 0;
 }
 .icons-container .icons i{
-    font-size: 3.5rem;
-    color:var(--black);
+    font-size: 32px;
+    color:green;
 }
 
 .icons-container .icons h3 {
-    font-size: 2.2rem;
+    font-size: 16px;
     color: var(--black);
-    padding-bottom: .5rem;
+    padding-bottom: .20px;
 }
 
 .icons-container .icons p {
-    font-size: 1.4rem;
-    color: var(--light-color);
-    padding-bottom: .5rem;
+    font-size: 16px;
+    color: rgb(72, 81, 92);
+    padding-bottom: .18px;
 }
 
 
