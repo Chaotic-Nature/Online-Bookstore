@@ -1,12 +1,12 @@
 <html>
       <head>
             <title> Ebook Store Admin Login </title>
-            <link rel = "stylesheet" href="../styling/LoginStyle.css">
+            <link rel = "stylesheet" href="../styling/styleAdmin.css">
             <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel = "stylesheet" type ="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-      </head>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+       </head>
 
-      <body>
+      <body style= "color : white">
             <section class ="header">
                   <section id="home">
                         <nav>
@@ -19,18 +19,20 @@
                               <div class="nav-links" id="navLinks">
                                     <i class="fa fa-times" onclick="hideMenu()"></i>
                                     <ul>
-                                          <li> <a href="../Index.php"> Home </a> </li>
-                                          <li> <a href="About.php"> About </a> </li>
-                                          <li> <a href="Books.php"> Books for sale! </a> </li>
-                                          <li> <a href="Sell.php"> Sell your books here! </a> </li>
-                                          <li> <a href="Login.php"> Login/Signup </a> </li>
+                                    <li> <a href="../Index.php"> Home </a> </li>
+                                    <li> <a href="AdminLogin.php"> Admin </a> </li>
+                                    <li> <a href="Login.php"> Login/Signup </a> </li>
                                     </ul>
                               </div>
                               <i class ="fa fa-bars" onclick="showMenu()"></i>
                         </nav>
-                        <h1> Welcome to the Admin only Page! </h1>
-                        <p>  Are you really an admin or are you just snooping around! Find out by logging in below! </p>
-                        <div class = "container">
+                        
+                        <section class = "AdminIntro">
+                              <hr>
+
+                              <!-- ORIGINAL CODE/ BEFORE CHANGE -->
+
+                              <!--<div class = "container">
                               <div class = "login-box">
                                     <div class = "row">
                                           <div class= "col-md-6 login-left">
@@ -48,8 +50,33 @@
                                           </div>
                                     </div>
                               </div>
-                        </div>
+                        </div>-->
+
+                        <div class="box">
+                        <form autocomplete="off">
+                        <h2>ADMIN</h2>
+                        <div class="inputBox">
+                              <input type="text" required="required">
+                              <span>Username</span>
+                              <i></i>
+			      </div>
+
+			      <div class="inputBox">
+				<input type="password" required="required">
+				<span>Password</span>
+				<i></i>
+			      </div>
+
+			      <div class="links">
+				<a href="#"></a> <!-- Don't delete -->
+				<a href="../Index.php">Home</a>
+			      </div>
+
+			      <input type="submit" value="Login">
+		            </form>
+	                  </div>
+                              </section>
+                         </section>
                   </section>
-            </section>
-      </body>
+            </body>
 </html>

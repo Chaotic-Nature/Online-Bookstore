@@ -17,6 +17,7 @@
                     <i class="fa fa-times" onclick="hideMenu()"></i>
                         <ul>
                             <li> <a href="../Index.php"> Home </a> </li>
+                            <li> <a href="AdminLogin.php"> Admin </a> </li>
                             <li> <a href="Login.php"> Login/Signup </a> </li>
                         </ul>
                 </div>
@@ -55,10 +56,10 @@
                 <input type="text" id="Username" name="Username" class="input-field" placeholder="Enter Username" required>
                 <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
 
-                <input type="text" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
+                <input type="Password" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
                 <!--<input type="text" class="input-field" placeholder="Enter Password" required>-->
 
-                <input type="text" id="confPwd" name="confPwd" class="input-field" placeholder="Confirm Password" required>
+                <input type="Password" id="confPwd" name="confPwd" class="input-field" placeholder="Confirm Password" required>
                     
                 <button type="submit" style="color:aliceblue" class= "submit-btn">Register</button>
                 </form>
