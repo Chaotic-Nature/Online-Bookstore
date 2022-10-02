@@ -55,7 +55,8 @@
 
                 <input type="text" id="Username" name="Username" class="input-field" placeholder="Enter Username" required>
                 <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
-
+                <input type="email" id="email" name="email" class="input-field" placeholder="Enter Email" required>
+                <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
                 <input type="Password" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
                 <!--<input type="text" class="input-field" placeholder="Enter Password" required>-->
 
