@@ -25,7 +25,40 @@
                               </div>
                               <i class ="fa fa-bars" onclick="showMenu()"></i>
                         </nav>
-                        <h1> Ready to sell some books pensis i? </h1>
+                        <h1> Ready to sell some books? </h1>
+                        <h2> Enter the following details </h2>
+
+                        <form action = "yes.php" method = "post">
+                            <fieldset>
+                                <legend> calculate students total mark </legend>
+                                
+                                <label for = "name">Name</label>
+                                <input type="text" id = "name" name="name">
+                                <br>
+
+                                <br>
+                                <label for = "surname">Surname</label>
+                                <input type="text" id = "surname" name="surname">
+                                <br>
+
+
+                                <br>
+                                <label for = "bookname">Books name</label>
+                                <input type="text" id = "bookname" name="bookname">
+                                <br>
+
+                               <br>
+                                <label for = "author"> Author </label>
+                                <input type="text" name="author" id= "author" >
+
+                                <br>
+                                <label for = "bookcon"> Book Condtion </label>
+                                <input type="text" name="bookcon" id= "bookcon" >
+
+                               
+                                <input type ="submit" name = "submit" value = "submit">
+
+
                   </section>
             </section>
       </body>
