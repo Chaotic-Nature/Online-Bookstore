@@ -8,7 +8,7 @@ include ("DBConn.php");
 $tblUserQuery = "CREATE TABLE tblUser (
     userID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     fName VARCHAR(20), lName VARCHAR(20), studNum VARCHAR(10), 
-    username VARCHAR(20), email VARCHAR (30), pwd VARCHAR(255))"
+    username VARCHAR(20), email VARCHAR (30), pwd VARCHAR(255), verified VARCHAR(1))"
 ;
 
 checkTableExistence("tblUser", $tblUserQuery);
