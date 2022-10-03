@@ -49,7 +49,7 @@
                     <hr>
                     <div class ="text-box">
                         <h1><b> Welcome To EBookStore </b></h1>
-                        <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks</p>
+                        <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks <a href ="admindash.php"> poop</a> </p>
                         <a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>
                     </div>
                 </section>
