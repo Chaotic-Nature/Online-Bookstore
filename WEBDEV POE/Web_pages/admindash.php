@@ -205,7 +205,7 @@ INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
                         <h2>Recent Purchases</h2>
                         <a href="#" class="btn">View All</a>
                     </div>
-                    <table>
+                    <table> 
                         <tr>
                             <th>Name</th>
                             <th>Book</th>
