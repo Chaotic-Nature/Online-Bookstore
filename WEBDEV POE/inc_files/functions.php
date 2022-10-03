@@ -98,7 +98,8 @@ function invalidEmail($email){
 
 function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
 {
-    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd) VALUES (?, ?, ?, ?, ?, ?);";
+    $verified = 'n';
+    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd, veried) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
         header("location: ../Web_pages/Login.php?error=createstmntFailed");
@@ -106,7 +107,7 @@ function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
     }
     else{
         $hashedPWD = password_hash($pwd, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssssss", $Fname, $Lname, $studNum, $username, $email, $hashedPWD);
+        mysqli_stmt_bind_param($stmt, "sssssss", $Fname, $Lname, $studNum, $username, $email, $hashedPWD, $verified);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         $myfile = fopen("../text_files/userData.txt", "a") or die("Unable to open file!");
