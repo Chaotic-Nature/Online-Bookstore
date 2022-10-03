@@ -53,7 +53,7 @@
                         </div>-->
 
                         <div class="box">
-                        <form autocomplete="off" action="../form_processing/admin_login_fp.php" method="POST" >
+                        <form autocomplete="off" action="admindash.php" method="POST" >
                         <h2>ADMIN</h2>
                         <div class="inputBox">
                               <!--<input type="text" required="required">-->
