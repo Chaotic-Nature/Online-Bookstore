@@ -103,8 +103,7 @@
                 </div>
             </div>
         </div>
-            </section>
-            </section>
+            
 
         <script>
             var x = document.getElementById("login");

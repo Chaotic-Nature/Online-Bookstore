@@ -46,3 +46,4 @@ INTO TABLE $tableBooks FIELDS TERMINATED BY ',,'");
 
 loadTextData("LOAD DATA LOCAL INFILE 'text_files/orderData.txt'
 INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
+?>

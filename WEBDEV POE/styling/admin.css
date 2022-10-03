@@ -13,6 +13,7 @@ a {
     text-decoration: none;
 }
 
+
 li {
     list-style: none;
 }
@@ -74,7 +75,7 @@ td {
     justify-content: center;
 }
 
-.side-menu li {
+.side-menu li a{
     font-size: 24px;
     padding: 10px 40px;
     color: white;
@@ -82,7 +83,7 @@ td {
     align-items: center;
 }
 
-.side-menu li:hover {
+.side-menu li a:hover {
     background: white;
     color: #f05462;
 }

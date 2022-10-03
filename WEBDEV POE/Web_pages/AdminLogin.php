@@ -53,18 +53,18 @@
                         </div>-->
 
                         <div class="box">
-                        <form autocomplete="off" action="admindash.php" method="POST" >
+                        <form autocomplete="off" action="../form_processing/admin_login_fp.php" method="POST" >
                         <h2>ADMIN</h2>
                         <div class="inputBox">
                               <!--<input type="text" required="required">-->
-                              <input type="text" id="Username" name="Username" required="required">
+                              <input type="text" id="Username" name="Username"  required="required">
                               <span>Username</span>
                               <i></i>
 			      </div>
 
 			      <div class="inputBox">
 				<!--<input type="password" required="required">-->
-                        <input type="password" id="Password" name="Password" required="required">
+                        <input type="password" id="Password" name="Password"  required="required">
 				<span>Password</span>
 				<i></i>
 			      </div>

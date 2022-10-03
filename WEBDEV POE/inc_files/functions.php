@@ -196,7 +196,13 @@ function loginAdmin($DBConn, $username, $password){
     else if($passwordCheck === TRUE){
         session_start();
         $_SESSION['AD_num'] = $adminExists['AD_num'];
-        header("location: ../Index.php?LoggedInAsAdmin");
+        header("location: ../Web_pages/admindash.php?LoggedInAsAdmin");
         exit();
     }
+}
+function logoutAdmin(){
+    session_start();
+    session_unset();
+    session_destroy();
+    header("location:../index.php");
 }
