@@ -13,6 +13,8 @@
         <meta name="author" content="" />
         <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -100,64 +102,110 @@
             <div id="layoutSidenav_content">
                 <main>
                 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Users</h1>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Surname</th>
-                                            <th>StudentNumber</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Surname</th>
-                                            <th>StudentNumber</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <?php 
-                                    $sql = "SELECT * from tblUser";
-                                    $result = mysqli_query($DBConn,$sql);
-                                    if($total_orders = mysqli_num_rows($result)){
-                                        while (($Row = mysqli_fetch_assoc($result)) !== null)
-                                        {
-                                            echo '<tr>';
-                                            echo '<td contenteditable="false">'.$Row['fName'].'</td>';
-                                            echo '<td contenteditable="false">'. $Row['lName'].'</td>';
-                                            echo '<td contenteditable="false">'. $Row['studNum'] . '</td>';
-                                            echo '<td><button class="editbtn"><Center><img src="../images/edit.png" alt="Edit image" width="25" height="25"/></Center></button></td>';
-                                            echo '<td><button class="deletebtn"><Center><a><img src="../images/trash.png" alt="Delete image" width="25" height="25"/></Center></button></td>';
-                                            echo '</tr>';
-                                        }
-                                    }
-                                    else{
-                                        echo '<h1> No Orders</h1>';
-                                    }
-                                    ?>
+                        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-                                    </tbody>
-                                    <button style="position:absolute; right: 1rem; bottom: 1rem" type="button" class="btn btn-primary" onclick="process();">Add User</button>
-                                </table>
-                                
-                            </div>
-                            
-                        </div>
-                        
+
+
+    <main role="main" class="container" style="margin-top:20px;">
+
+    	<div style="margin-top:20px;">
+    		<h2>Users</h2>
+    		<button id="table2-new-row-button" class="btn btn-dark">Add New User</button>
+		  	<table class="table table-striped table-bordered" id="table2">
+			  	<thead class="thead-dark">
+				    <tr>
+                    <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Surname</th>
+				      <th scope="col">Student Number</th>
+                      <th scope="col">Email</th>
+				    </tr>
+			  	</thead>
+			  	<tbody>
+                  <?php 
+                    $sql = "SELECT * from tblUser";
+                    $result = mysqli_query($DBConn,$sql);
+                    if($total_orders = mysqli_num_rows($result)){
+                        while (($Row = mysqli_fetch_assoc($result)) !== null)
+                        {
+                            echo '<tr>';
+                            echo '<td contenteditable="false">'.$Row['userID'].'</td>';
+                            echo '<td contenteditable="false">'.$Row['fName'].'</td>';
+                            echo '<td contenteditable="false">'. $Row['lName'].'</td>';
+                            echo '<td contenteditable="false">'. $Row['studNum'] . '</td>';
+                            echo '<td contenteditable="false">'. $Row['email'] . '</td>';
+                            echo '</tr>';
+                        }
+                        }
+                        else{
+                            echo '<h1> No Orders</h1>';
+                        }
+                    ?>
+			  	</tbody>
+			</table>
+		</div>
+        </div>
+
                 
     </main>
+    <script src="../js/bstable.js"></script>
+
+<script>
+    // Basic example
+    var example1 = new BSTable("table1");
+    example1.init();
+
+    // Example with a add new row button & only some columns editable & removed actions column label
+    var example2 = new BSTable("table2", {
+        editableColumns:"1,2",
+        $addButton: $('#table2-new-row-button'),
+        onEdit:function() {
+            console.log("EDITED");
+        },
+        advanced: {
+            columnLabel: ''
+        }
+    });
+    example2.init();
+
+    // Example with dynamic table that requires BSTable refresh
+    // TODO Create method to randomly seed a random amount of rows in the table
+    var example3 = new BSTable("table3");
+    example3.init();
+
+    function dynamicTableValuesExample() {
+        // Generate new values for the table and show how BSTable updates
+        let names = ['Matt', 'John', 'Billy', 'Erica', 'Sammy', 'Tom', 'Tate', 'Emily', 'Mike', 'Bob'];
+        let numberOfRows = Math.floor(Math.random() * 10);
+
+        document.getElementById("table3-body").innerHTML = '';	// Clear current table
+        for(let i = 0; i < numberOfRows; i++) {
+            let randomNameIndex = Math.floor(Math.random() * 10);
+
+            let row = document.createElement("tr");
+            row.innerHTML = `<th scope="row">` + i + `</th><td>Value</td><td>` + names[randomNameIndex] + `</td><td>@twitter</td>`;
+            document.getElementById("table3-body").append(row);
+        }
+
+        example3.refresh();
+    }
+
+</script>
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
 </body>
 
 <footer class="py-4 bg-light mt-auto">
@@ -192,33 +240,7 @@ if (sidebarToggle) {
 }
 
 });
-window.addEventListener('DOMContentLoaded', event => {
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
 
-    const datatablesSimple = document.getElementById('datatablesSimple');
-    if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
-    }
-});
-$(document).ready(function () {
-      $('.editbtn').click(function () {
-          var currentTD = $(this).parents('tr').find('td');
-          if ($(this).html() == 'Edit') {                  
-              $.each(currentTD, function () {
-                  $(this).prop('contenteditable', true)
-              });
-          } else {
-             $.each(currentTD, function () {
-                  $(this).prop('contenteditable', false)
-              });
-          }
-
-          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
-
-      });
-
-  });
 </script>
 
 </html>
