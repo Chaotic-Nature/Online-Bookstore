@@ -108,7 +108,16 @@
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card bg-primary text-white mb-4">
-                                <h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>100</strong></h2>
+                                <?php 
+                                    $sql = "SELECT * from tblOrders";
+                                    $result = mysqli_query($DBConn,$sql);
+                                        if($total_Orders = mysqli_num_rows($result)){
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Orders.'</strong></h2>';
+                                        }
+                                        else{
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Orders</strong></h2>';
+                                        }
+                                ?>
                                 <img style="position:absolute; right: 2rem; top:2rem" src="../images/checkout.png" alt="Registrations Icon" width="70" height="70">
                                     <div class="card-body">New Orders</div>
                                     
@@ -120,7 +129,16 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card bg-warning text-white mb-4">
-                                <h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>100</strong></h2>
+                                <?php 
+                                    $sql = "SELECT * from tblUser ";
+                                    $result = mysqli_query($DBConn,$sql);
+                                        if($total_users = mysqli_num_rows($result)){
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
+                                        }
+                                        else{
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Users</strong></h2>';
+                                        }
+                                ?>
                                 <img style="position:absolute; right: 2rem; top:2rem" src="../images/registrations.png" alt="Registrations Icon" width="70" height="70">
                                     <div class="card-body">User Registrations</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -131,9 +149,18 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card bg-success text-white mb-4">
-                                <h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>100</strong></h2>
+                                <?php 
+                                    $sql = "SELECT * from tblBooks";
+                                    $result = mysqli_query($DBConn,$sql);
+                                        if($total_Books = mysqli_num_rows($result)){
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Books.'</strong></h2>';
+                                        }
+                                        else{
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Books</strong></h2>';
+                                        }
+                                ?>
                                 <img style="position:absolute; right: 2rem; top:2rem" src="../images/sale.png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Currently Sold Books</div>
+                                    <div class="card-body">Currently Selling Books</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -142,7 +169,22 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card bg-danger text-white mb-4">
-                                <h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>100</strong></h2>
+                                <?php 
+                                    
+                                    $sql = "SELECT * from tblUser WHERE verified='y'";
+                                    $result = mysqli_query($DBConn,$sql);
+                                        $total_verified_users = mysqli_num_rows($result);
+                                    $sql = "SELECT * from tblUser WHERE verified='n'";
+                                    $result = mysqli_query($DBConn,$sql);
+                                    $total_unverified_users = mysqli_num_rows($result);
+                                    $pending_verifications = $total_verified_users-$total_unverified_users;
+                                    if($pending_verifications >0){
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$pending_verifications.'</strong></h2>';
+                                        }
+                                        else{
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Pending Verfifications</strong></h2>';
+                                        }
+                                ?>
                                 <img style="position:absolute; right: 2rem; top:2rem" src="../images/wall-clock.png" alt="Registrations Icon" width="70" height="70">
                                     <div class="card-body">Pending Student Login Verifications</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -153,22 +195,7 @@
                             </div>
                         </div>
                         <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card text-grey mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblOrders";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_Orders = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Orders.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Orders</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Orders</div> 
-                                </div>
-                            </div>
+                        
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card text-grey mb-4">
                                 
@@ -186,26 +213,11 @@
                                     <div class="card-body">Admins</div> 
                                 </div>
                             </div>
+                            
                             <div class="col-xl-3 col-md-6">
                                 <div style="display:block" class="card text-grey mb-4">
                                 <?php 
-                                    $sql = "SELECT * from tblBooks";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_Books = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Books.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Books</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Available Books</div> 
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card text-grey mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblUser";
+                                    $sql = "SELECT * from tblUser WHERE verified='n'";
                                     $result = mysqli_query($DBConn,$sql);
                                         if($total_users = mysqli_num_rows($result)){
                                         echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
@@ -215,7 +227,23 @@
                                         }
                                 ?>
                                 <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Students</div> 
+                                    <div class="card-body">Unverified Students</div> 
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div style="display:block" class="card text-grey mb-4">
+                                <?php 
+                                    $sql = "SELECT * from tblUser WHERE verified='y'";
+                                    $result = mysqli_query($DBConn,$sql);
+                                        if($total_users = mysqli_num_rows($result)){
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
+                                        }
+                                        else{
+                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Users</strong></h2>';
+                                        }
+                                ?>
+                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
+                                    <div class="card-body">Verified Students</div> 
                                 </div>
                             </div>
                         </div>
