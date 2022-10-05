@@ -47,7 +47,7 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
@@ -55,44 +55,26 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                           
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <a class="nav-link" href="Users.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Users
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Dashboard
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#Dashboard"> Dashboard</a></a>
-                                            <a class="nav-link" href="../Admin/Users.php"> Users</a>
-                                            <a class="nav-link" href="#Orders"> Orders</a>
-                                            <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Verification
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#Dashboard"> Student Logins</a></a>
-                                            <a class="nav-link" href="../Admin/Users.php"> User Registrations</a>
-                                            
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
+                            <a class="nav-link" href="books.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Books
+                            </a>
+                            <a class="nav-link" href="Orders.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Orders
+                            </a>
+                            <div class="sb-sidenav-menu-heading"></div>
+                            <a class="nav-link" href="../Admin/Orders.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Updates
+                            </a>
+                            <div class="sb-sidenav-menu-heading"></div>
+                           
+
                             
                         </div>
                     </div>
@@ -107,11 +89,11 @@
                         <p><strong><?php echo $_SESSION['Username']; ?></strong></p>
                         
                         <?php endif ?>
-        
+                            
                     </div>
+                    <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
                 </nav>
                 </div>
-       
         
                 <div id="layoutSidenav_content">
                 <main>
@@ -138,8 +120,8 @@
                                    </tr>
                                    </thead>
                                    <tfoot>
-                                           <tr>
-                                           <th>Title</th>
+                                    <tr>
+                                        <th>Title</th>
                                        <th>Author</th>
                                        <th>Edition</th>
                                        <th>Category</th>
@@ -147,8 +129,8 @@
                                        <th>Price</th>
                                        <th>Edit</th>
                                        <th>Delete</th>
-                                           </tr>
-                                       </tfoot>
+                                    </tr>
+                                    </tfoot>
                                    <tbody>
                                    <?php 
                                        $sql = "SELECT * from tblBooks";
@@ -163,8 +145,9 @@
                                                echo '<td>'. $Row['cate'] . '</td>';
                                                echo '<td>'. $Row['cond'] . '</td>';
                                                echo '<td>'. $Row['price'] . '</td>';
-                                               echo '<td><Center><a><img src="../images/edit.png" alt="Delete image" width="25" height="25"/></a><Center><td>';
-                                               echo '<td><Center><a><img src="../images/trash.png" alt="Delete image" width="25" height="25"/></a><Center><td>';
+                                               echo '<td><button class="editbtn"><Center><img src="../images/edit.png" alt="Edit image" width="25" height="25"/></Center></button></td>';
+                                               echo '<td><button class="deletebtn"><Center><a><img src="../images/trash.png" alt="Delete image" width="25" height="25"/></Center></button></td>';
+                                               echo '</tr>';
                                            }
                                        }
                                        else{
@@ -172,22 +155,18 @@
                                        }
                                    ?>
                                    </tbody>
-                                   
-                               
+                                   <button style="position:absolute; right: 1rem; bottom: 1rem" type="button" class="btn btn-primary" onclick="process();">Add Book</button>
+                                    
                                 </table>
                             </div>
                         </div>
                     </div>
                         
-                        </div>
-                        </div>
                         
-                            </table>
-                        </div>
                         
                     </div>
                 </div>
-            </div>
+            
         </div>
         </main>
     </body>

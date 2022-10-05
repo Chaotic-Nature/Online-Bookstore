@@ -1,102 +1,7 @@
 <?php  
       include ("../Database_files/DBConn.php");
-      //The functions file in the inc_files contains the loadTextData function.
-      include('../inc_files/functions.php');
-      
-      //Including the file containing database connection.
-
-      
-      $tblUserQuery = "CREATE TABLE tblUser (
-          userID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-          fName VARCHAR(20), lName VARCHAR(20), studNum VARCHAR(10), 
-          username VARCHAR(20), email VARCHAR (30), pwd VARCHAR(255))"
-      ;
-      
-      checkTableExistence("tblUser", $tblUserQuery);
-      
-      loadTextData("LOAD DATA LOCAL INFILE '../text_files/userData.txt'
-          INTO TABLE tblUser FIELDS TERMINATED BY ','");
-      
-      function checkTableExistence($tableName, $createTableQuery){
-          global $DBConn;
-          $showTableQuery = "SHOW TABLES LIKE '$tableName'";
-          $showTableQueryResult = mysqli_query($DBConn, $showTableQuery);
-          if(mysqli_num_rows($showTableQueryResult) > 0){
-              dropTable($tableName);
-              create_table($createTableQuery); 
-          }
-          else{
-              create_table($createTableQuery); 
-          }  
-      }
-      
-      //This method drops a table.
-      function dropTable($tableName){
-          global $DBConn;
-          $dropTableQuery = "DROP TABLE $tableName";
-          $dropTableQueryResult = mysqli_query($DBConn, $dropTableQuery);
-          if($dropTableQueryResult == FALSE){
-              echo "<p>Couldnt drop table</p>";
-          }
-      }
-      
-      //This method creates a table.//
-      function create_table($createTableQuery){
-          global $DBConn;
-          $createTableQueryResult = mysqli_query($DBConn, $createTableQuery);
-          if($createTableQueryResult === FALSE){
-              echo "<p>Error code: " . mysqli_errno($DBConn) . " : " 
-              . mysqli_error($DBConn) . "</p>";
-          }
-      }
-//Variables created.
-$tableAdmin = "tblAdmin";
-$tableBooks = "tblBooks";
-$tableOrders = "tblOrders";
-
-//Queries to create tables in bookstore.
-//Admin table.
-$adminQuery = "CREATE TABLE $tableAdmin (
-    AD_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    AD_fName VARCHAR(20),AD_lName VARCHAR(20),
-    AD_num VARCHAR(10), AD_username VARCHAR(20),
-    AD_email VARCHAR(25), AD_pwd VARCHAR(255));"
-;
-//Books table.
-$booksTableQuery = "CREATE TABLE $tableBooks (
-    bookID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    title VARCHAR(100), author VARCHAR(30), 
-    ed VARCHAR(4), cate VARCHAR(8), 
-    cond VARCHAR(13), price VARCHAR(10), 
-    descript VARCHAR(150), img1 VARBINARY(255));"
-;
-//Order table
-$orderTableQuery = "CREATE TABLE $tableOrders (
-    order_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    userID INT NOT NULL REFERENCES tblUser(userID),
-    bookID INT NOT NULL REFERENCES tblBooks(bookID), 
-    deliveryDate DATE);"
-;
-
-/*This method checks if a table exists, deletes it if
-it does, and recreates it with the dummy text file data. 
-It takes arguments for the name of the table to be created and 
-the sql query to create it. The method can be found in CreateTable.php*/
-checkTableExistence($tableAdmin, "$adminQuery");
-checkTableExistence($tableBooks, "$booksTableQuery");
-checkTableExistence($tableOrders, "$orderTableQuery");
-
-//the loadTextData loads text file data into the database. The code for
-//this function exists in the functions.php file.
-loadTextData("LOAD DATA LOCAL INFILE '../text_files/adminData.txt' 
-INTO TABLE $tableAdmin FIELDS TERMINATED BY ','");
-
-loadTextData("LOAD DATA LOCAL INFILE '../text_files/bookData.txt'
-INTO TABLE $tableBooks FIELDS TERMINATED BY ',,'");
-
-loadTextData("LOAD DATA LOCAL INFILE '../text_files/orderData.txt'
-INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
 ?>
+
 <!DOCTYPE html>
 <html lang ="en" dir ="Itr";>
 
@@ -106,10 +11,10 @@ INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-   
+        <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../styling/admin.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
@@ -143,7 +48,7 @@ INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
@@ -151,57 +56,51 @@ INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                           
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <a class="nav-link" href="Users.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Users
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Dashboard
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="books.php">Books</a>
-                                            <a class="nav-link" href="Orders.php"> Orders</a>
-                                            <a class="nav-link" href="Users.php">Users</a>
-                                            <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Verification
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="#Dashboard"> Student Logins</a></a>
-                                            <a class="nav-link" href="../Admin/Users.php"> User Registrations</a>
-                                            
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
+                            <a class="nav-link" href="books.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Books
+                            </a>
+                            <a class="nav-link" href="Orders.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Orders
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading"></div>
+                            <a class="nav-link" href="../Admin/Orders.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Updates
+                            </a>
+                            <div class="sb-sidenav-menu-heading"></div>
+
+                            
                         </div>
                     </div>
+                    
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <!-- logged in user information -->
+                        <?php  
+                        include("../form_processing/admin_login_fp.php");
+                        if (isset($_SESSION['Username'])) : ?>
+                        
+                        <p><strong><?php echo $_SESSION['Username']; ?></strong></p>
+                        
+                        <?php endif ?>
+                            
                     </div>
+                    <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
                 </nav>
                 </div>
+        
             
             <div id="layoutSidenav_content">
                 <main>
                 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Pending User Registrations</h1>
+                        <h1 class="mt-4">Users</h1>
                         
                         <div class="card mb-4">
                             <div class="card-header">
@@ -213,129 +112,50 @@ INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Surname</th>
+                                            <th>StudentNumber</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Surname</th>
+                                            <th>StudentNumber</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
+                                    <?php 
+                                    $sql = "SELECT * from tblUser";
+                                    $result = mysqli_query($DBConn,$sql);
+                                    if($total_orders = mysqli_num_rows($result)){
+                                        while (($Row = mysqli_fetch_assoc($result)) !== null)
+                                        {
+                                            echo '<tr>';
+                                            echo '<td contenteditable="false">'.$Row['fName'].'</td>';
+                                            echo '<td contenteditable="false">'. $Row['lName'].'</td>';
+                                            echo '<td contenteditable="false">'. $Row['studNum'] . '</td>';
+                                            echo '<td><button class="editbtn"><Center><img src="../images/edit.png" alt="Edit image" width="25" height="25"/></Center></button></td>';
+                                            echo '<td><button class="deletebtn"><Center><a><img src="../images/trash.png" alt="Delete image" width="25" height="25"/></Center></button></td>';
+                                            echo '</tr>';
+                                        }
+                                    }
+                                    else{
+                                        echo '<h1> No Orders</h1>';
+                                    }
+                                    ?>
 
                                     </tbody>
+                                    <button style="position:absolute; right: 1rem; bottom: 1rem" type="button" class="btn btn-primary" onclick="process();">Add User</button>
                                 </table>
+                                
                             </div>
+                            
                         </div>
-                    </div>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Signed-up Users</h1>
                         
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <h1 class="mt-4">Resitsered Students</h1>
-
-
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    
                 
     </main>
 </body>
@@ -381,8 +201,24 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
-$(document).ready(function() {
-  $('#dataTable').DataTable();
-});
+$(document).ready(function () {
+      $('.editbtn').click(function () {
+          var currentTD = $(this).parents('tr').find('td');
+          if ($(this).html() == 'Edit') {                  
+              $.each(currentTD, function () {
+                  $(this).prop('contenteditable', true)
+              });
+          } else {
+             $.each(currentTD, function () {
+                  $(this).prop('contenteditable', false)
+              });
+          }
+
+          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+      });
+
+  });
 </script>
+
 </html>
