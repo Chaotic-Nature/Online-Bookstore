@@ -118,11 +118,11 @@
 				      <th scope="col">Title</th>
 				      <th scope="col">Author</th>
 				      <th scope="col">Edition</th>
-                      <th scope="col">Category</th>
+                      <th scope="col">Genre</th>
+                      <th scope="col">Description</th>
+				      <th scope="col">Image</th>
                       <th scope="col">Condition</th>
-				      <th scope="col">Price</th>
-                      <th scope="col">Descpription</th>
-                      <th scope="col">Image</th>
+                      <th scope="col">Seller</th>
 				    </tr>
 			  	</thead>
 			  	<tbody>
@@ -137,11 +137,11 @@
                             echo '<td contenteditable="false">'.$Row['title'].'</td>';
                             echo '<td contenteditable="false">'. $Row['author'].'</td>';
                             echo '<td contenteditable="false">'. $Row['ed'] . '</td>';
-                            echo '<td contenteditable="false">'. $Row['cate'] . '</td>';
-                            echo '<td contenteditable="false">'. $Row['cond'] . '</td>';
-                            echo '<td contenteditable="false">'. $Row['price'] . '</td>';
+                            echo '<td contenteditable="false">'. $Row['genre'] . '</td>';
                             echo '<td contenteditable="false">'. $Row['descript'] . '</td>';
                             echo '<td contenteditable="false">'. $Row['img1'] . '</td>';
+                            echo '<td contenteditable="false">'. $Row['cond'] . '</td>';
+                            echo '<td contenteditable="false">'. $Row['seller'] . '</td>';
                             echo '</tr>';
                         }
                         }

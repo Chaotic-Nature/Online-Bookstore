@@ -33,59 +33,63 @@
         <div class="container">
           <div class="title">Book Selling form</div>
           <div class="content">
-            <form action="#">
+            <form action="../form_processing/sell_books_fp.php" method="POST" enctype="multipart/form-data">
               <div class="user-details">
                 <div class="input-box">
-                  <span class="details">Name</span>
-                  <input type="text" placeholder="Enter your name" required>
-                </div>
-                <div class="input-box">
                   <span class="details">Name of the book</span>
-                  <input type="text" placeholder="Enter the name of the book" required>
-                </div>
-                <div class="input-box">
-                  <span class="details">Surname</span>
-                  <input type="text" placeholder="Enter your surname" required>
+                  <input type="text" name="title" placeholder="Enter the name of the book" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Author of the book</span>
-                  <input type="text" placeholder="Enter the author of the book" required>
+                  <input type="text" name="author" placeholder="Enter the author of the book" required>
                 </div>
                 <div class="input-box">
-                  <span class="details">Student number</span>
-                  <input type="text" placeholder="Enter your studentnumber" required>
+                  <span class="details">Edition</span>
+                  <input type="number" name="edition" maxlength="1" placeholder="Enter the edition of the book" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Books genre</span>
-                  <input type="text" placeholder="Enter the genre of the book" required>
+                  <input type="text" name="genre" placeholder="Enter the genre of the book" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Books Description</span>
+                  <input type="text" name="description" maxlength="150" placeholder="Enter a description of the book" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Book Image</span>
+                  <input type="file" name="image" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Books price</span>
-                  <input type="text" placeholder="Enter the price of the book" required>
+                  <input type="text" name="price" placeholder="Enter the price of the book" required>
+                </div>
+                <div class="input-box">
+                  <span class="details">Student number</span>
+                  <input type="text" name="seller" placeholder="Enter your studentnumber" required>
                 </div>
               </div>
               <div class="bookcon">
-                <input type="radio" name="condtion" id="dot-1">
-                <input type="radio" name="condtion" id="dot-2">
-                <input type="radio" name="condtion" id="dot-3">
-                <span class="book-title">The condtion of the book</span>
+                <input type="radio" name="condition" id="dot-1" value="Bad">
+                <input type="radio" name="condition" id="dot-2" value="Good">
+                <input type="radio" name="condition" id="dot-3" value="Mint Condition">
+                <span class="book-title">The condition of the book</span>
                 <div class="category">
                   <label for="dot-1">
                     <span class="dot one"></span>
-                    <span class="condtion">Bad</span>
+                    <span class="condition">Bad</span>
                   </label>
                   <label for="dot-2">
                     <span class="dot two"></span>
-                    <span class="condtion">Good</span>
+                    <span class="condition">Good</span>
                   </label>
                   <label for="dot-3">
                     <span class="dot three"></span>
-                    <span class="condtion">Mint condtion</span>
+                    <span class="condition">Mint condition</span>
                   </label>
                 </div>
               </div>
               <div class="button">
-                <input type="submit" value="Sell!">
+                <input type="submit" name="submit" value="Sell!">
               </div>
             </form>
           </div>
