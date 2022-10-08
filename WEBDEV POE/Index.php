@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> EBookStore.com </title>
 
-        <link rel = "stylesheet" href="styling/style.css">
+        <link rel = "stylesheet" href="styling/style.css?v=<?php echo time();?>">
         <!-- FONT -->
         <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
@@ -146,13 +146,13 @@
                                     //The loop uses html and css to display every book in the table.
                                     while (($Row = mysqli_fetch_assoc($selectQueryResult)) !== null)
                                     {
-                                          echo '<div>';
-                                          echo '<div>Title: ' .$Row['title'] . '</div>';
-                                          echo '<div>R '. $Row['price']. '</div>';
-                                          echo '<div>';
-                                          echo '<img src='. $Row['img1'] . ' width="150" height="200">';
-                                          echo '</div>';
-                                          echo "<div>
+                                          echo '<div >';
+                                            echo '<div>Title: ' .$Row['title'] . '</div>';
+                                            echo '<div>R '. $Row['price']. '</div>';
+                                            echo '<div>';
+                                                echo '<img src='. $Row['img1'] . ' width="150" height="200">';
+                                            echo '</div>';
+                                            echo "<div>
                                                       <button id='msg-seller'>Contact seller</button>
                                                       <button id='atc-btn'>Add to cart</button>
                                                 </div>";
