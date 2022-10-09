@@ -143,10 +143,21 @@ function loginUser($DBConn, $studentNum, $password){
         exit();
     }
     else if($passwordCheck === TRUE){
-        session_start();
-        $_SESSION['studNum'] = $userExists['studNum'];
-        header("location: ../Index.php?UserLoginSuccessful");
-        exit();
+        if($userExists['verify'] == 'n')
+        {
+            header("location: ../Web_pages/Message.php?message=unverified");
+        }
+        else
+        {
+            
+            header("location: ../Index.php?");
+            session_start();
+            $_SESSION['name'] = $userExists['fName'];
+            $_SESSION['surname'] = $userExists['lName'];
+            $_SESSION['studentNumber'] = $userExists['studNum'];
+            exit();
+        }
+        
     }
 }
 
@@ -196,12 +207,13 @@ function loginAdmin($DBConn, $username, $password){
     }
     else if($passwordCheck === TRUE){
         session_start();
-        $_SESSION['AD_num'] = $adminExists['AD_num'];
+        $_SESSION['ADusername'] = $adminExists['AD_username'];
+        $_SESSION['ADFname'] = $adminExists['AD_fName'];
         header("location: ../Web_pages/admindash.php?LoggedInAsAdmin");
         exit();
     }
 }
-function logoutAdmin(){
+function logout(){
     session_start();
     session_unset();
     session_destroy();
@@ -261,5 +273,4 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
     }
     
 }
-
 

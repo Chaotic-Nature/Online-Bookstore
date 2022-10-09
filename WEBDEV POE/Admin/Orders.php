@@ -1,5 +1,6 @@
 <?php  
-      include ("../Database_files/DBConn.php");
+    session_start();
+    include ("../Database_files/DBConn.php");
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../form_processing/admin_logout_fp.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="../inc_files/logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -69,32 +70,22 @@
                             <a class="nav-link" href="Orders.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Orders
-                            </a>
-                            
-                            <div class="sb-sidenav-menu-heading"></div>
-                            <a class="nav-link" href="../Admin/Orders.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Updates
-                            </a>
-                            <div class="sb-sidenav-menu-heading"></div>
-
-                            
-                        </div>
+                            </a> 
                     </div>
-                    
-                    <div class="sb-sidenav-footer">
+                        </div>
+                        <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         <!-- logged in user information -->
                         <?php  
-                        include("../form_processing/admin_login_fp.php");
-                        if (isset($_SESSION['Username'])) : ?>
+                        if (isset($_SESSION['ADusername'])) : ?>
                         
-                        <p><strong><?php echo $_SESSION['Username']; ?></strong></p>
+                        <p><strong><?php echo $_SESSION['ADusername']; ?></strong></p>
                         
                         <?php endif ?>
                             
                     </div>
-                    <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
+                    <a class="nav-link" href="../inc_files/logout.php"> Logout</a>
+                    </div>
                 </nav>
                 </div>
         
@@ -146,63 +137,6 @@
 
                 
     </main>
-    <script src="../js/bstable.js"></script>
-
-<script>
-    // Basic example
-    var example1 = new BSTable("table1");
-    example1.init();
-
-    // Example with a add new row button & only some columns editable & removed actions column label
-    var example2 = new BSTable("table2", {
-        editableColumns:"1,2",
-        $addButton: $('#table2-new-row-button'),
-        onEdit:function() {
-            console.log("EDITED");
-        },
-        advanced: {
-            columnLabel: ''
-        }
-    });
-    example2.init();
-
-    // Example with dynamic table that requires BSTable refresh
-    // TODO Create method to randomly seed a random amount of rows in the table
-    var example3 = new BSTable("table3");
-    example3.init();
-
-    function dynamicTableValuesExample() {
-        // Generate new values for the table and show how BSTable updates
-        let names = ['Matt', 'John', 'Billy', 'Erica', 'Sammy', 'Tom', 'Tate', 'Emily', 'Mike', 'Bob'];
-        let numberOfRows = Math.floor(Math.random() * 10);
-
-        document.getElementById("table3-body").innerHTML = '';	// Clear current table
-        for(let i = 0; i < numberOfRows; i++) {
-            let randomNameIndex = Math.floor(Math.random() * 10);
-
-            let row = document.createElement("tr");
-            row.innerHTML = `<th scope="row">` + i + `</th><td>Value</td><td>` + names[randomNameIndex] + `</td><td>@twitter</td>`;
-            document.getElementById("table3-body").append(row);
-        }
-
-        example3.refresh();
-    }
-
-</script>
-<script type="text/javascript">
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-36251023-1']);
-_gaq.push(['_setDomainName', 'jqueryscript.net']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-
-</script>
 
 </body>
 

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,9 @@
                         }
                         if($_GET['message'] == "AccountCreationSuccessful"){
                             echo "<h2>You have successfully created an account! Once your account is verified by an admin, you will gain full student access to the site!</h2>";
+                        }
+                        if($_GET['message'] == "unverified"){
+                            echo "<h2>Your account is still being validated. Please be patient.</h2>";
                         }
                     }
                 ?>

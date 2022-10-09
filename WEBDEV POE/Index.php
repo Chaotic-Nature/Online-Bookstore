@@ -1,6 +1,7 @@
 <?php 
-      include('./Database_files/CreateTable.php'); 
-      include_once('./Database_files/LoadBookStore.php');
+    session_start();
+    include('./Database_files/CreateTable.php'); 
+    include_once('./Database_files/LoadBookStore.php');
 ?>
 <html lang ="en" dir ="Itr";>
     <head>
@@ -37,20 +38,44 @@
                         <div class="nav-links" id="navLinks">
                             <i class="fa fa-times" onclick="hideMenu()"></i>
                             <ul>
-                                <li> <a href="Index.php"> Home </a> </li>
-                                <li> <a href="#About"> About </a> </li>
-                                <li> <a href="#Sale"> Books for sale! </a> </li>
-                                <li> <a href="./Web_pages/Sell.php"> Sell your books here! </a> </li>
-                                <li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>
+                                <?php  
+                                    if (isset($_SESSION['studentNumber'])){
+                                        //if the user is logged in, it only displays these links//
+                                        echo'<li> <a href="Index.php"> Home</a></li>';
+                                        echo'<li> <a href="#About">About</a></li>';
+                                        echo'<li> <a href="#Sale">Books for sale!</a></li>';
+                                        echo'<li> <a href="./Web_pages/Sell.php">Sell your books here!</a></li>';
+                                        echo'<li> <a href="./inc_files/logout.php">Logout</a></li>';
+                                    }
+                                    else{
+                                        //when the user is logged out it displays these links//
+                                        echo'<li> <a href="Index.php"> Home </a> </li>';
+                                        echo'<li> <a href="#About"> About </a> </li>';
+                                        echo'<li> <a href="#Sale"> Books for sale! </a></li>';
+                                        echo'<li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>';
+                                    }
+                                ?>
+                                
+                                
                             </ul>
                         </div>
                         <i class ="fa fa-bars" onclick="showMenu()"></i>
                     </nav>
                     <hr>
                     <div class ="text-box">
-                        <h1><b> Welcome To EBookStore </b></h1>
-                        <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks  </p>
-                        <a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>
+                        <?php
+                            if(isset($_SESSION['studentNumber'])){
+                                //if the user is logged in//
+                                echo "<h1><b>Welcome back " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</b></h1>";
+                            }
+                            else{
+                                //if the user is logged out//
+                                echo "<h1><b> Welcome To EBookStore </b></h1>";
+                                echo '<p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks  </p>';
+                                echo '<a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>';
+                            }                   
+                        ?>
+                        
                     </div>
                 </section>
             </section>
