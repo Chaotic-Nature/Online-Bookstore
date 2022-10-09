@@ -15,30 +15,26 @@
         
         <!-- SEARCH/FONT -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        
+
         <!-- THE ICONS -->
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+
     </head>
     <body style="font-family : Verdana, sans-serif">
         <!--HOME PAGE-->
         <section class ="header">
             <section id="home">
                 <nav>
-                    <!--<input type="checkbox" id="check">
-                        <label for ="check" class="checkbtn">
-                            <i class="fas fa-bars"></i>
-                        </label> -->
-                        
                         <label class = "logo">
                             <b>EBookStore</b>
                         </label>   
-
+                        
                         <div class="nav-links" id="navLinks">
                             <i class="fa fa-times" onclick="hideMenu()"></i>
                             <ul>
                                 <li> <a href="Index.php"> Home </a> </li>
-                                <li> <a href="#About"> About </a> </li>
+                                <li> <a href="#Foot"> About Us</a> </li>
                                 <li> <a href="#Sale"> Books for sale! </a> </li>
                                 <li> <a href="./Web_pages/Sell.php"> Sell your books here! </a> </li>
                                 <li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>
@@ -108,9 +104,9 @@
                 
                         <div class="books-grid">
                         <h1 class="Book-Head">For The Bookworms</h1>
-                            
+                        
                             <!-- Add the search file name -->
-                            <div id="search-bar" class="pull-right">
+                           <div id="search-bar" class="pull-right">
                             <form action="search.php"    
                                 method="get" 
                                 style="width: 100%; max-width: 30rem">
@@ -132,7 +128,7 @@
                             </div>
                             </form>
                             </div>
-                            
+                            <div class 
                               <?php 
                                     include_once('./Database_files/DBConn.php');
                                     $selectQuery = "SELECT * FROM tblBooks;";
@@ -146,11 +142,11 @@
                                     //The loop uses html and css to display every book in the table.
                                     while (($Row = mysqli_fetch_assoc($selectQueryResult)) !== null)
                                     {
-                                          echo '<div>';
+                                          echo '<div class = "books">';
                                           echo '<div>Title: ' .$Row['title'] . '</div>';
                                           echo '<div>R '. $Row['price']. '</div>';
                                           echo '<div>';
-                                          echo '<img src='. $Row['img1'] . ' width="150" height="200">';
+                                          echo '<img src='. $Row['img1'] . '>';
                                           echo '</div>';
                                           echo "<div>
                                                       <button id='msg-seller'>Contact seller</button>
@@ -164,19 +160,66 @@
             </section>
             </section>
 
-            <section class="about-us">
-                <section id="About">
-                    <h1>About Us</h1>
+            <!-- ORIGINAL CODE -->
+
+            <!--<section class="about-us">
+                <section id="About"> -->
+                    <!--<h1>About Us</h1>
                     <p>Ebook store was established in the cold winter of the year 2022 by 3 disguished gentlemen, Cibbs , AP and Sir Gareth thee End.</p>
                     <h2> Contact Us </h2>
                     <p>
                         Email: Awesomsauce@gmail.com</br>
                         Tel: 069 210 420</br>
                         Location:
-                    </p>
-                </section>
-            </section>
-            
+                    </p>-->
+    <section class = "footee">
+    <section id = "Foot">
+    <footer class="footer">
+  	 <div class="container">
+  	 	<div class="rows">
+  	 		<div class="footer-col">
+  	 			<h4>EBookStore</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Get Help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">shipping</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Book Lovers</h4>
+  	 			<ul>
+  	 				<li><a href="#">Best Sellers</a></li>
+  	 				<li><a href="#">Book Sales</a></li>
+  	 				<li><a href="#">Second Hand Books</a></li>
+  	 				<li><a href="#">Sell Your Books</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+  	 				<li><a href="#Sale">Book Sales</a></li>
+  	 				<li><a href="./Web_pages/Sell.php">Sell Your Book</a></li>
+  	 				<li><a href="./Web_pages/Login.php">Sign up/Login</a></li>
+                </ul>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+    </section>
+    </section>
             <script>
                 var navLinks = document.getElementById("navLinks");
                 function showMenu() {
