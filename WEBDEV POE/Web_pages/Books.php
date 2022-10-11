@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <html>
       <head>
             <title> Ebook Store Catalog </title>

@@ -101,7 +101,6 @@
 
     <main role="main" class="container" style="margin-top:20px;">
 
-    	<div style="margin-top:20px;">
     		<h2>Users</h2>
     		<button id="table2-new-row-button" class="btn btn-dark">Add New User</button>
 		  	<table class="table table-striped table-bordered" id="table2">
@@ -137,7 +136,7 @@
 			  	</tbody>
 			</table>
 		</div>
-        </div>
+
 
                 
     </main>

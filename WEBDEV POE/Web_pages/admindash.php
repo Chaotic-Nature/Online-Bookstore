@@ -1,402 +1,181 @@
-<?php  
-    session_start();
-      include ("../Database_files/DBConn.php");
+<?php
+session_start();
+include("../Database_files/DBConn.php");
 ?>
 
 <!DOCTYPE html>
-<html lang ="en" dir ="Itr";>
-    <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-       
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="../css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-        <title>Admin Panel</title>
-        <style>
+<html lang="en" dir="Itr" ;>
 
-        </style>
-    </head>
-    <body>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../Index.php">EBooksStore</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../form_processing/admin_logout_fp.php">Logout</a></li>
-                    </ul>
-                </li>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="../styling/style.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="../styling/Admin.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <title>Admin Panel</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="side-menu">
+
+        <!-- Navbar Brand-->
+        <h1 class="brand-name"><a href="../Index.php">EBooksStore</a></h1>
+
+        <!-- Navbar Search-->
+
+        <!-- Navbar-->
+        <nav>
+            <ul>
+
+                <li><a class="nav-link" href="../Web_pages/admindash.php">Dashboard</a></li>
+                <li><a class="nav-link" href="../Admin/Users.php">Users</a></li>
+                <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
+                <li><a class="nav-link" href="../Admin/Orders.php">Orders</a></li>
+                <li><a class="nav-link" href="../Admin/Orders.php">Updates</a></li>
+
+                <div class="small">Logged in as:</div>
+                <!-- logged in user information -->
+                <?php
+                if (isset($_SESSION['ADusername'])) : ?>
+
+                    <p><strong><?php echo $_SESSION['ADusername']; ?></strong></p>
+
+                <?php endif ?>
+                <li><a class="nav-link" href="../inc_files/logout.php">Logout</a></li>
             </ul>
         </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="../Web_pages/admindash.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <a class="nav-link" href="../Admin/Users.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Users
-                            </a>
-                            <a class="nav-link" href="../Admin/books.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Books
-                            </a>
-                            <a class="nav-link" href="../Admin/Orders.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Orders
-                            </a>
-                            
-                            <div class="sb-sidenav-menu-heading"></div>
-                            <a class="nav-link" href="../Admin/Orders.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Updates
-                            </a>
-                            <div class="sb-sidenav-menu-heading"></div>
+    </div>
 
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <!-- logged in user information -->
-                        <?php  
-                        include("../form_processing/admin_login_fp.php");
-                        if (isset($_SESSION['Username'])) : ?>
-                        
-                        <p><strong><?php echo $_SESSION['Username']; ?></strong></p>
-                        
-                        <?php endif ?>
-                            
-                    </div>
-                    <a class="nav-link" href="../form_processing/admin_logout_fp.php"> Logout</a>
-                </nav>
+
+    <div class="container">
+
+        <!-- shows the cards and their info -->
+
+        <div class="content">
+            <div class="content-2">
+                <div class="new-students">
+                    <h1>Student Login Verifications</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student Name</th>
+                                <th>Student Surname</th>
+                                <th>Student Number</th>
+                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Verified</th>
+                                <?php
+                                $sql = "SELECT COUNT(1) verified from tblUser WHERE verified = 'n' ";
+                                $result = mysqli_query($DBConn, $sql);
+                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
+                                    echo '<th>' . "Action" . '</th>';
+                                }
+
+                                ?>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * from tblUser";
+                            $result = mysqli_query($DBConn, $sql);
+                            if ($total_orders = mysqli_num_rows($result)) {
+                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
+                                    echo '<tr>';
+                                    echo '<td>' . $Row['userID'] . '</td>';
+                                    echo '<td>' . $Row['fName'] . '</td>';
+                                    echo '<td>' . $Row['lName'] . '</td>';
+                                    echo '<td>' . $Row['studNum'] . '</td>';
+                                    echo '<td>' . $Row['email'] . '</td>';
+                                    echo '<td>' . $Row['username'] . '</td>';
+                                    echo '<td>' . $Row['verified'] . '</td>';
+                                    if ($Row['verified'] == 'n') {
+                                        echo '<td><button id="verify-btn" style="cursor: pointer" onclick="Verify()">Verify</td>';
+                                    }
+
+
+                                    echo '</tr>';
+                                }
+                            } else {
+                                echo '<h1> No Verified Students</h1>';
+                            }
+                        ?>
+
+                        </tbody>
+                    </table>
                 </div>
-       
-        
-                <div id="layoutSidenav_content">
-                <main>
-               
-            <!-- shows the cards and their info -->
-            <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card bg-primary text-white mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblOrders";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_Orders = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Orders.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Orders</strong></h2>';
-                                        }
+                <div class="new-students">
+                    <h1>Pending Student Login Verifications</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Password length</th>
+                                <?php
+                                $sql = "SELECT COUNT(1) verified from tblUser WHERE verified = 'n' ";
+                                $result = mysqli_query($DBConn, $sql);
+                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
+                                    echo '<th>' . "Action" . '</th>';
+                                }
+
                                 ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/checkout.png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">New Orders</div>
-                                    
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../Admin/Orders.php">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card bg-warning text-white mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblUser ";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_users = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Users</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/registrations.png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">User Registrations</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="../Admin/Users.php">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card bg-success text-white mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblBooks";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_Books = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Books.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Books</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/sale.png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Currently Selling Books</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#Sale">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card bg-danger text-white mb-4">
-                                <?php 
-                                    
-                                    $sql = "SELECT * from tblUser WHERE verified='y'";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        $total_verified_users = mysqli_num_rows($result);
-                                    $sql = "SELECT * from tblUser WHERE verified='n'";
-                                    $result = mysqli_query($DBConn,$sql);
-                                    $total_unverified_users = mysqli_num_rows($result);
-                                    $pending_verifications = $total_verified_users-$total_unverified_users;
-                                    if($pending_verifications >0){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$pending_verifications.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Pending Verfifications</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/wall-clock.png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Pending Student Login Verifications</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                        
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card text-grey mb-4">
-                                
-                                <?php 
-                                    $sql = "SELECT * from tblAdmin";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_Admins = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_Admins.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Admins</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Admins</div> 
-                                </div>
-                            </div>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            include ("../inc_files/functions.php");
+                            include ("../Database_files/DBConn.php");
                             
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card text-grey mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblUser WHERE verified='n'";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_users = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Users</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Unverified Students</div> 
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div style="display:block" class="card text-grey mb-4">
-                                <?php 
-                                    $sql = "SELECT * from tblUser WHERE verified='y'";
-                                    $result = mysqli_query($DBConn,$sql);
-                                        if($total_users = mysqli_num_rows($result)){
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong>'.$total_users.'</strong></h2>';
-                                        }
-                                        else{
-                                        echo '<h2 style="text-align:justify; margin-left:15px; display:inline-flex" class="mt-4"><strong> No Users</strong></h2>';
-                                        }
-                                ?>
-                                <img style="position:absolute; right: 2rem; top:2rem" src="../images/to-do-list (1).png" alt="Registrations Icon" width="70" height="70">
-                                    <div class="card-body">Verified Students</div> 
-                                </div>
-                            </div>
-                        </div>
+                            if(isset($_POST['submit']))
+                            {
+                                $username = $_POST['Username'];
+                                $password = $_POST['Password'];
+                            
+                                if(isEmptyAdminLogin($username, $password) !== FALSE){
+                                    header("location: ../Web_pages/AdminLogin.php?error=emptyInput");
+                                    exit();
+                                }
+                                
+                                loginAdmin($DBConn, $username, $password);
+                            $sql = "SELECT * from tblUser";
+                            $result = mysqli_query($DBConn, $sql);
+                            if ($total_orders = mysqli_num_rows($result)) {
+                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
+                                    echo '<tr>';
+                                    echo '<td'. $Row['id'] . '</td>';
+                                    echo '<td>' . $Row['username'] . '</td>';
+                                    echo '<td>' . strlen($password) . '</td>';
+                                    if ($Row['verified'] == 'n') {
+                                        echo '<td><button id="verify-btn" style="cursor: pointer" onclick="Verify()">Verify</td>';
+                                    }
+
+
+                                    echo '</tr>';
+                                }
+                            } else {
+                                echo '<h1> No Verified Students</h1>';
+                            }
+                        }
                         
-                        <h1 class="mt-4">Activity List</h1>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Task Category</th>
-                                            <th>Task Name</th>
-                                            <th>Task Status</th>
-                                            <th>Quick Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Task Category</th>
-                                            <th>Task Name</th>
-                                            <th>Task Status</th>
-                                            <th>Quick Link</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <tr>
-                                        <td>User</td>
-                                        <td>Add User</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Edit User</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Delete User</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Book</td>
-                                        <td>Add Book</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Edit Book</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Delete Book</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Order</td>
-                                        <td>Add Order</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Edit Order</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Delete Order</td>
-                                        <td>Task Status</td>
-                                        <td>Link</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                            ?>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        
-        </main>
-    </body>
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu() {
-            navLinks.style.right = "0";
-        }
-        function hideMenu() {
-            navLinks.style.right = "-200px";
-        }
-        window.addEventListener('DOMContentLoaded', event => {
+<scritp>
+    
+</scritp>
 
-// Toggle the side navigation
-const sidebarToggle = document.body.querySelector('#sidebarToggle');
-if (sidebarToggle) {
-    // Uncomment Below to persist sidebar toggle between refreshes
-    // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-    //     document.body.classList.toggle('sb-sidenav-toggled');
-    // }
-    sidebarToggle.addEventListener('click', event => {
-        event.preventDefault();
-        document.body.classList.toggle('sb-sidenav-toggled');
-        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-    });
-}
+</body>
 
-});
-window.addEventListener('DOMContentLoaded', event => {
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
-
-    const datatablesSimple = document.getElementById('datatablesSimple');
-    if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
-    }
-});
-$(document).ready(function() {
-  $('#dataTable').DataTable();
-});
-
-    </script>
 
 </html>

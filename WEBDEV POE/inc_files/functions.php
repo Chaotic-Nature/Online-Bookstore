@@ -85,7 +85,26 @@ function usernameExists($DBConn, $username)
     }
     mysqli_stmt_close($stmt);
 }
-
+function bookExists($DBConn, $bookID)
+{
+    $sqlQuery = "SELECT * FROM tblBooks WHERE bookID = ?;";
+    $stmt = mysqli_stmt_init($DBConn);
+    if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
+        header("location: ../Web_pages/Login.php?error=bookstatementFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $bookID);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row;    
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($stmt);
+}
 function invalidEmail($email){
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     $result = true;
@@ -273,4 +292,6 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
     }
     
 }
+
+        
 

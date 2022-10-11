@@ -1,9 +1,9 @@
 <?php
 //The functions file in the inc_files contains the loadTextData function.
-include('./inc_files/functions.php');
+include('inc_files/functions.php');
 
 //Including the file containing database connection.
-include ("DBConn.php");
+include ("Database_files/DBConn.php");
 
 $tblUserQuery = "CREATE TABLE tblUser (
     userID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
