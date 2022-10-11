@@ -3,4 +3,4 @@
  ,,Java Programming,,J. Farrell,,9,,Education,,A beginner friendly book that teaches the Java programming language,,./book_images/java-programming.jpg,,350,,Mint Condition,,ST10101076,,
  ,,Pro C# 9 with .NET: Foundational Principles and Practices in Programming,,A. Troelsen, P. Japikse,,10,,Education,,A beginner friendly book that teaches the C#programming language,,./book_images/pro-c-9-with-net-5.jpg,,370,,Good,,ST10101076,,
  ,,Basics with Windows PowerShell V2,,Prometheus MMS,,2,,Computer Science,, Microsoft designed PowerShell to automate system tasks, such as batch processing, and to create systems management tools for commonly implemented processes,,./book_images/basics-with-windows-powershell-v2.jpg,,216,,Good,,ST10101067,, ,,WW3 CHronicaless,,Rombi,,3,,History,,A spin tense real life horror documentary of sragent Road forging his path towards victoy W3,,./book_images/601898.png,,499,,Mint Condition,,ST10101076,,
- ,,5344,,42,,4234,,424,,4234,,./book_images/955180.jpg,,42,,Good,,ST10101076,,
+
