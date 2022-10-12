@@ -22,18 +22,7 @@
 				<br />\n";
 
             $image = "./book_images/" . $_FILES['image']['name'];
-            $sqlQuery = "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond, seller) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-            $stmt = mysqli_stmt_init($DBConn);
-            if (!mysqli_stmt_prepare($stmt, $sqlQuery)) {
-                header("location: ../Web_pages/Sell.php?error=CouldntSellBook");
-                exit();
-            } else {
-                mysqli_stmt_bind_param($stmt, "sssssssss", $title, $author, $edition, $genre, $description, $image, $price, $condition, $seller);
-                mysqli_stmt_execute($stmt);
-                mysqli_stmt_close($stmt);
-                $myfile = fopen("../text_files/bookData.txt", "a") or die("Unable to open file!");
-                fwrite($myfile, " ,,$title,,$author,,$edition,,$genre,,$description,,$image,,$price,,$condition,,$seller,,\n");
-                fclose($myfile);
+            $sqlQuery = mysqli_query($DBConn, "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond, seller) VALUES ($title, $author, $edition, $genre, $descript, $price, $condition, $seller);");
                 header('location:../Admin/books.php?message=successfully added book"');
                 exit();
             }
@@ -41,5 +30,5 @@
             echo "There was an error uploading \"" . htmlentities($_FILES['image']['name']) .
                 "\".<br />\n";
     }
-}
+
 ?>
