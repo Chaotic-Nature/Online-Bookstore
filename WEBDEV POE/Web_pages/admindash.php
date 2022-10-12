@@ -95,7 +95,7 @@ include("../Database_files/DBConn.php");
                                     echo '<td>' . $Row['username'] . '</td>';
                                     echo '<td>' . $Row['verified'] . '</td>';
                                     if ($Row['verified'] == 'n') {
-                                        echo '<td><a id="verify-btn" href="verify-book-form.php">Verify</a></td>';
+                                        echo '<td><a id="verify-btn" href="../Admin/verify_user_form.php">Verify</a></td>';
                                     }
 
 
@@ -137,7 +137,7 @@ include("../Database_files/DBConn.php");
                                     echo '<td'. $username . '</td>';
                                     echo '<td>' . strlen($password) . '</td>';
                                     if ($Row['verified'] == 'n') {
-                                        echo '<td><button id="verify-btn" style="cursor: pointer" onclick="Verify()">Verify</td>';
+                                        echo '<td><a id="verify-btn" href="../Admin/verify_user_form.php">Verify</a></td>';
                                     }
                                     echo '</tr>';
                                 }
