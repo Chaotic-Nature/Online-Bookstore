@@ -26,6 +26,7 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row['fName'] . "</td>";
   echo "<td>" . $row['lName'] . "</td>";
   echo "<td>" . $row['studNum'] . "</td>";
+  echo "<td>" . $row['username'] . "</td>";
   echo "<td>" . $row['email'] . "</td>";
   echo "<td>" . $row['pwd'] . "</td>";
 
