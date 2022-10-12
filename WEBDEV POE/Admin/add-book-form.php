@@ -71,6 +71,5 @@ session_start();
           </div>
         </div>
 
-	</form>
 </body>
 </html>

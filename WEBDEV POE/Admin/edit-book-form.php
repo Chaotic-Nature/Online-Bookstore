@@ -21,23 +21,23 @@ session_start();
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">Name of the book</span>
-                  <input type="text" name="title" placeholder="Enter the name of the book" required value="<?php echo $row['title']; ?>">
+                  <input type="text" name="title" placeholder="Enter the new name of the book" required value="<?php echo $row['title']; ?>">
                 </div>
                 <div class="input-box">
                   <span class="details">Author of the book</span>
-                  <input type="text" name="author" placeholder="Enter the author of the book" required value="<?php echo $row['author']; ?>">
+                  <input type="text" name="author" placeholder="Enter the new author of the book" required value="<?php echo $row['author']; ?>">
                 </div>
                 <div class="input-box">
                   <span class="details">Edition</span>
-                  <input type="number" name="edition" maxlength="1" placeholder="Enter the edition of the book" required value="<?php echo $row['ed']; ?>">
+                  <input type="number" name="edition" maxlength="1" placeholder="Enter the new edition of the book" required value="<?php echo $row['ed']; ?>">
                 </div>
                 <div class="input-box">
                   <span class="details">Books genre</span>
-                  <input type="text" name="genre" placeholder="Enter the genre of the book" required value="<?php echo $row['genre']; ?>">
+                  <input type="text" name="genre" placeholder="Enter the new genre of the book" required value="<?php echo $row['genre']; ?>">
                 </div>
                 <div class="input-box">
                   <span class="details">Books Description</span>
-                  <input type="text" name="description" maxlength="150" placeholder="Enter a description of the book" required value="<?php echo $row['descript']; ?>">
+                  <input type="text" name="description" maxlength="150" placeholder="Enter a new description of the book" required value="<?php echo $row['descript']; ?>">
                 </div>
                 <div class="input-box">
                   <span class="details">Book Image</span>
@@ -45,7 +45,7 @@ session_start();
                 </div>
                 <div class="input-box">
                   <span class="details">Books price</span>
-                  <input type="text" name="price" placeholder="Enter the price of the book" required value="<?php echo $row['price']; ?>">
+                  <input type="text" name="price" placeholder="Enter the new price of the book" required value="<?php echo $row['price']; ?>">
                 </div>
               </div>
               <div class="bookcon">
