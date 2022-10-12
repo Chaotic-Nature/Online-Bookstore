@@ -95,7 +95,7 @@ include("../Database_files/DBConn.php");
                                     echo '<td>' . $Row['username'] . '</td>';
                                     echo '<td>' . $Row['verified'] . '</td>';
                                     if ($Row['verified'] == 'n') {
-                                        echo '<td><button id="verify-btn" style="cursor: pointer" onclick="Verify()">Verify</td>';
+                                        echo '<td><a id="verify-btn" href="verify-book-form.php">Verify</a></td>';
                                     }
 
 
@@ -117,15 +117,7 @@ include("../Database_files/DBConn.php");
                                 <th>#</th>
                                 <th>Username</th>
                                 <th>Password length</th>
-                                <?php
-                                $sql = "SELECT COUNT(1) verified from tblUser WHERE verified = 'n' ";
-                                $result = mysqli_query($DBConn, $sql);
-                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
-                                    echo '<th>' . "Action" . '</th>';
-                                }
-
-                                ?>
-
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -136,34 +128,23 @@ include("../Database_files/DBConn.php");
                             
                             if(isset($_POST['submit']))
                             {
+                                $id=$_GET['id'];
                                 $username = $_POST['Username'];
                                 $password = $_POST['Password'];
                             
-                                if(isEmptyAdminLogin($username, $password) !== FALSE){
-                                    header("location: ../Web_pages/AdminLogin.php?error=emptyInput");
-                                    exit();
-                                }
-                                
-                                loginAdmin($DBConn, $username, $password);
-                            $sql = "SELECT * from tblUser";
-                            $result = mysqli_query($DBConn, $sql);
-                            if ($total_orders = mysqli_num_rows($result)) {
-                                while (($Row = mysqli_fetch_assoc($result)) !== null) {
                                     echo '<tr>';
-                                    echo '<td'. $Row['id'] . '</td>';
-                                    echo '<td>' . $Row['username'] . '</td>';
+                                    echo '<td'. $id . '</td>';
+                                    echo '<td'. $username . '</td>';
                                     echo '<td>' . strlen($password) . '</td>';
                                     if ($Row['verified'] == 'n') {
                                         echo '<td><button id="verify-btn" style="cursor: pointer" onclick="Verify()">Verify</td>';
                                     }
-
-
                                     echo '</tr>';
                                 }
-                            } else {
-                                echo '<h1> No Verified Students</h1>';
+                             else {
+                                echo '<p> No pending Student verifications</p>';
                             }
-                        }
+                        
                         
                             ?>
 

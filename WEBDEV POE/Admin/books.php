@@ -57,7 +57,7 @@ include("../Database_files/DBConn.php");
             <div class="content-2">
                 <div class="new-students">
                     <div>
-                        <form method="POST" action="add.php">
+                        <form method="POST" action="add-book.php">
                             <label>Image:</label><input type="text" name="firstname">
                             <label>Title:</label><input type="text" name="lastname">
                             <input type="submit" name="add">
