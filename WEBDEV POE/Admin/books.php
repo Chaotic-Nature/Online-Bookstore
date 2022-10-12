@@ -57,11 +57,7 @@ include("../Database_files/DBConn.php");
             <div class="content-2">
                 <div class="new-students">
                     <div>
-                        <form method="POST" action="add-book.php">
-                            <label>Image:</label><input type="text" name="firstname">
-                            <label>Title:</label><input type="text" name="lastname">
-                            <input type="submit" name="add">
-                        </form>
+                        <a id="add-book-btn" href="add-book-form.php">Add book</a>    
                     </div>
 
 
@@ -87,36 +83,35 @@ include("../Database_files/DBConn.php");
                         <tbody>
                             <?php
 
-                          
+
                             $query = mysqli_query($DBConn, "SELECT * from tblBooks");
                             if ($total_orders = mysqli_num_rows($query)) {
-                            while ($row = mysqli_fetch_array($query)) {
+                                while ($row = mysqli_fetch_array($query)) {
                             ?>
-                                <tr>
-                                    <td><?php echo $row['bookID']; ?></td>
-                                    <td><?php echo '<img src=../' . $row['img1'] . ' width="150" height="200"; ?>' ?></td>
-                                    <td><?php echo $row['title']; ?></td>
-                                    <td><?php echo $row['price']; ?></td>
-                                    <td><?php echo $row['author']; ?></td>
-                                    <td><?php echo $row['ed']; ?></td>
-                                    <td><?php echo $row['genre']; ?></td>
-                                    <td><?php echo $row['descript']; ?></td>
-                                    <td><?php echo $row['cond']; ?></td>
-                                    <td><?php echo $row['seller']; ?></td>
-                                    <td>
-                                        <a id="edit-book-btn" href="edit-book-form.php?id=<?php echo $row['bookID']; ?>">Edit</a>
-                                        <a id="delete-book-btn" href="../form_processing/delete_book_fp.php?id=<?php echo $row['bookID']; ?>">Delete</a>
+                                    <tr>
+                                        <td><?php echo $row['bookID']; ?></td>
+                                        <td><?php echo '<img src=../' . $row['img1'] . ' width="150" height="200"; ?>' ?></td>
+                                        <td><?php echo $row['title']; ?></td>
+                                        <td><?php echo $row['price']; ?></td>
+                                        <td><?php echo $row['author']; ?></td>
+                                        <td><?php echo $row['ed']; ?></td>
+                                        <td><?php echo $row['genre']; ?></td>
+                                        <td><?php echo $row['descript']; ?></td>
+                                        <td><?php echo $row['cond']; ?></td>
+                                        <td><?php echo $row['seller']; ?></td>
+                                        <td>
+                                            <a id="edit-book-btn" href="edit-book-form.php?id=<?php echo $row['bookID']; ?>">Edit</a>
+                                            <a id="delete-book-btn" href="../form_processing/delete_book_fp.php?id=<?php echo $row['bookID']; ?>">Delete</a>
 
-                                    </td>
+                                        </td>
                                 <?php
+                                }
+                            } else {
+                                echo '<h1> No Books</h1>';
                             }
-                        } else {
-                            echo '<h1> No Books</h1>';
-                            
-                        }
                                 ?>
-                                </tr>
-                        
+                                    </tr>
+
                         </tbody>
                     </table>
                 </div>

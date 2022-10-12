@@ -227,7 +227,7 @@ td {
     height: 40px;
     width: 40px;
 }
-#edit-book-btn, #delete-book-btn, #verify-btn{
+#edit-book-btn, #delete-book-btn, #verify-btn, #add-book-btn{
     border: none;
     border-radius: 8px;
     font-size: 18px;
