@@ -2,5 +2,5 @@
  ,,The subtle art of not giving a f*ck,,mark manson,,1,,self-help,,a self help book that talks about giving less care to things that dont matter,,./book_images/The_Subtle_Art_of_Not_Giving_a_F_ck_by_Mark_Manson_-_Book_Cover.png,,150,,,,ST10101076,,
  ,,Java Programming,,J. Farrell,,9,,Education,,A beginner friendly book that teaches the Java programming language,,./book_images/java-programming.jpg,,350,,Mint Condition,,ST10101076,,
  ,,Pro C# 9 with .NET: Foundational Principles and Practices in Programming,,A. Troelsen, P. Japikse,,10,,Education,,A beginner friendly book that teaches the C#programming language,,./book_images/pro-c-9-with-net-5.jpg,,370,,Good,,ST10101076,,
- ,,Basics with Windows PowerShell V2,,Prometheus MMS,,2,,Computer Science,, Microsoft designed PowerShell to automate system tasks, such as batch processing, and to create systems management tools for commonly implemented processes,,./book_images/basics-with-windows-powershell-v2.jpg,,216,,Good,,ST10101067,,
+ ,,Basics with Windows PowerShell V2,,Prometheus MMS,,2,,Computer Science,,Microsoft designed PowerShell to automate system tasks, such as batch processing, and to create systems management tools for commonly implemented processes,,./book_images/basics-with-windows-powershell-v2.jpg,,216,,Good,,ST10101067,,
 

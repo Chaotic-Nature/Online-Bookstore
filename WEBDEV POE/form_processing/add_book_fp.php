@@ -22,7 +22,7 @@
 				<br />\n";
 
             $image = "./book_images/" . $_FILES['image']['name'];
-            $sqlQuery = mysqli_query($DBConn, "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond, seller) VALUES ($title, $author, $edition, $genre, $descript, $price, $condition, $seller);");
+            $sqlQuery = mysqli_query($DBConn, "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond) VALUES ('$title', '$author', '$edition', '$genre', '$description', '$image', '$price', '$condition')");
                 header('location:../Admin/books.php?message=successfully added book"');
                 exit();
             }
