@@ -438,13 +438,12 @@
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>Get Help</h4>
+  	 			<h4>Contact Us</h4>
   	 			<ul>
-  	 				<li><a href="#">FAQ</a></li>
-  	 				<li><a href="#">shipping</a></li>
-  	 				<li><a href="#">returns</a></li>
-  	 				<li><a href="#">order status</a></li>
-  	 				<li><a href="#">payment options</a></li>
+  	 				<li><a href="#"><i class="fa fa-phone"> +21 78 776 1943</i></a></li>
+  	 				<li><a href="#"><i class="fa fa-phone"> +21 76 228 9921</i></a></li>
+  	 				<li><a href="#"><i class="fa fa-envelope"> EBookStore@gmail.com</i></a></li>
+  	 				<li><a href="#"><i class="fa fa-map-marker"> Western Cape, Cape Town</i></a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
@@ -461,7 +460,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
   	 				<li><a href="#Sale">Book Sales</a></li>
-  	 				<li><a href="./Web_pages/Sell.php">Sell Your Book</a></li>
+  	 				<li><a href="#Involved">Sell Your Book</a></li>
   	 				<li><a href="./Web_pages/Login.php">Sign up/Login</a></li>
                 </ul>
   	 			</div>
