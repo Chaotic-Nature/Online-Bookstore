@@ -85,7 +85,26 @@ function usernameExists($DBConn, $username)
     }
     mysqli_stmt_close($stmt);
 }
-
+function bookExists($DBConn, $bookID)
+{
+    $sqlQuery = "SELECT * FROM tblBooks WHERE bookID = ?;";
+    $stmt = mysqli_stmt_init($DBConn);
+    if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
+        header("location: ../Web_pages/Login.php?error=bookstatementFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $bookID);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row;    
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($stmt);
+}
 function invalidEmail($email){
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     $result = true;
@@ -143,10 +162,21 @@ function loginUser($DBConn, $studentNum, $password){
         exit();
     }
     else if($passwordCheck === TRUE){
-        session_start();
-        $_SESSION['studNum'] = $userExists['studNum'];
-        header("location: ../Index.php?UserLoginSuccessful");
-        exit();
+        if($userExists['verify'] == 'n')
+        {
+            header("location: ../Web_pages/Message.php?message=unverified");
+        }
+        else
+        {
+            
+            header("location: ../Index.php?");
+            session_start();
+            $_SESSION['name'] = $userExists['fName'];
+            $_SESSION['surname'] = $userExists['lName'];
+            $_SESSION['studentNumber'] = $userExists['studNum'];
+            exit();
+        }
+        
     }
 }
 
@@ -196,12 +226,13 @@ function loginAdmin($DBConn, $username, $password){
     }
     else if($passwordCheck === TRUE){
         session_start();
-        $_SESSION['AD_num'] = $adminExists['AD_num'];
+        $_SESSION['ADusername'] = $adminExists['AD_username'];
+        $_SESSION['ADFname'] = $adminExists['AD_fName'];
         header("location: ../Web_pages/admindash.php?LoggedInAsAdmin");
         exit();
     }
 }
-function logoutAdmin(){
+function logout(){
     session_start();
     session_unset();
     session_destroy();
@@ -262,4 +293,5 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
     
 }
 
+        
 

@@ -528,3 +528,14 @@ input[type=submit]:hover {
     background-color: #4475e2;
     color: #fff;
 }
+
+.ourStory {
+    text-align: center;
+}
+.ourStory h2{
+    font-size: 25px;
+}
+.ourStory p {
+    font-size: 14px;
+    color: #888;
+}

@@ -227,14 +227,45 @@ td {
     height: 40px;
     width: 40px;
 }
+#edit-book-btn, #delete-book-btn, #verify-btn, #add-book-btn{
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px;
+}
+#edit-book-btn{
+    background: green;
+}
+#delete-book-btn{
+    background: red;
+}
+th{
+    outline: 2px solid rgba(0, 0, 0, 0.19);
+    background-color: #444;
+    color: white;
+}
+td{
+    outline: 2px solid rgba(0, 0, 0, 0.19);
 
+}
+table{
+    border-radius: 20px;
+}
+@media screen and (max-width: 1325px) {
+    th,td{
+        display: grid;
+    }
+}
 @media screen and (max-width: 1050px) {
     .side-menu li {
         font-size: 18px;
     }
+   
 }
 
 @media screen and (max-width: 940px) {
+    
     .side-menu li span {
         display: none;
     }

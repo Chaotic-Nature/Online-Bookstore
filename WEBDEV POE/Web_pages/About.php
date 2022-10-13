@@ -1,4 +1,4 @@
-
+<?php session_start();?>
 <html>
       <head>
             <title> Ebook Store About </title>

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
     <head>
         <title>Login and Register</title>
@@ -44,13 +45,13 @@
 
                 <form id="register" class="input-group" action="../form_processing/signup_fp.php" method="POST">
                 
-                <input type="text" id="Fname" name="Fname" class="input-field" placeholder="Enter First Name" required>
+                <input type="text" id="Fname" name="Fname" class="input-field" placeholder="Enter First Name"  required type="text">
                 <!--<input type="text" class="input-field" placeholder="Enter First Name" required> -->
 
-                <input type="text" id="Lname" name="Lname" class="input-field" placeholder="Enter Last Name" required>
+                <input type="text" id="Lname" name="Lname" class="input-field" placeholder="Enter Last Name"  required type="text">
                 <!--<input type="text" class="input-field" placeholder="Enter Last Name" required> -->
                     
-                <input type="text" id="StudentNumber" name="StudentNumber" class="input-field" placeholder="Enter Student Number" required>
+                <input type="text" id="StudentNumber" name="StudentNumber" class="input-field" placeholder="Enter Student Number"  required type="text">
                 <!--<input type="text" class="input-field" placeholder="Enter Student Number" required> -->
 
                 <input type="text" id="Username" name="Username" class="input-field" placeholder="Enter Username" required>

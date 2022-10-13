@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <html>
       <head>
             <title> Ebook Store Catalog </title>
@@ -34,8 +36,6 @@
                         <div class='books-grid'>
                               <?php 
                                     include("../Database_files/DBConn.php");//Connecting to the database.
-
-                                    $selectQuery = "SELECT * FROM tblBooks;";
                                     $selectQueryResult = mysqli_query($DBConn, $selectQuery);//Selecting the books table.
                                     if ($selectQueryResult === FALSE)
                                     {
