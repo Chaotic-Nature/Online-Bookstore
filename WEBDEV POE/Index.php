@@ -36,7 +36,7 @@
                             <ul><?php 
                             if (isset($_SESSION['studentNumber'])){
                                 echo '<li> <a href="Index.php"> Home </a> </li>';
-                                echo '<li> <a href="#Foot"> About Us</a> </li>';
+                                echo '<li> <a href="#writer"> About Us</a> </li>';
                                 echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                 echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
                                 echo '<li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>';
@@ -44,7 +44,7 @@
                             else{
                                 //when the user is logged out it displays these links//
                                 echo'<li> <a href="Index.php"> Home </a> </li>';
-                                echo'<li> <a href="#About"> About </a> </li>';
+                                echo'<li> <a href="#writer"> About </a> </li>';
                                 echo'<li> <a href="#Sale"> Books for sale! </a></li>';
                                 echo'<li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>';
                             }
