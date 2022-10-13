@@ -98,7 +98,8 @@ function invalidEmail($email){
 
 function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
 {
-    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd) VALUES (?, ?, ?, ?, ?, ?);";
+    $verified = 'n';
+    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd, veried) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
         header("location: ../Web_pages/Login.php?error=createstmntFailed");
@@ -106,13 +107,13 @@ function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
     }
     else{
         $hashedPWD = password_hash($pwd, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($stmt, "ssssss", $Fname, $Lname, $studNum, $username, $email, $hashedPWD);
+        mysqli_stmt_bind_param($stmt, "sssssss", $Fname, $Lname, $studNum, $username, $email, $hashedPWD, $verified);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
         $myfile = fopen("../text_files/userData.txt", "a") or die("Unable to open file!");
         fwrite($myfile, "\n ,$Fname,$Lname,$studNum,$username,$email,$hashedPWD,");
         fclose($myfile);
-        header("location: ../Web_pages/Login.php?AccountCreationSuccessful");
+        header("location: ../Web_pages/Message.php?message=AccountCreationSuccessful");
         exit();  
     }
     
@@ -196,7 +197,69 @@ function loginAdmin($DBConn, $username, $password){
     else if($passwordCheck === TRUE){
         session_start();
         $_SESSION['AD_num'] = $adminExists['AD_num'];
-        header("location: ../Index.php?LoggedInAsAdmin");
+        header("location: ../Web_pages/admindash.php?LoggedInAsAdmin");
         exit();
     }
 }
+function logoutAdmin(){
+    session_start();
+    session_unset();
+    session_destroy();
+    header("location:../index.php");
+}
+
+// SELL BOOKS PAGE FUNCTIONS //
+function CleanInput($input, $fieldName){
+    
+    if((is_string($input) == TRUE) OR (is_numeric($input) == TRUE))
+    {
+        $input = trim($input);
+        $input = stripslashes($input);
+
+    }
+    else
+    {
+        echo "<p>Please enter a proper value for " . $fieldName . ".</p>";
+        $input = "";
+    }
+    return $input;
+}
+
+function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, $image, $price, $condition, $seller)
+{
+
+    $userExists = studNumExists($DBConn, $seller);
+    if($userExists === FALSE){
+        header("location: ../Web_pages/Sell.php?error=userDontExist");
+        exit();
+    }
+    /*$query = "SELECT userID FROM tblUser WHERE studNum = '$seller'";
+    $queryres = mysqli_query($DBConn, $query);
+    if($queryres === FALSE){
+        echo "<p>Error code: " . mysqli_errno($DBConn) . " : " . 
+        mysqli_error($DBConn) . "</p>";
+    }
+    $row = mysqli_fetch_assoc($queryres);
+    $seller = $row['userID'];*/
+
+
+    $sqlQuery = "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond, seller) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($DBConn);
+    if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
+        header("location: ../Web_pages/Sell.php?error=CouldntSellBook");
+        exit();
+    }
+    else{
+        mysqli_stmt_bind_param($stmt, "sssssssss", $title, $author, $edition, $genre, $description, $image, $price, $condition, $seller);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        $myfile = fopen("../text_files/bookData.txt", "a") or die("Unable to open file!");
+        fwrite($myfile, " ,,$title,,$author,,$edition,,$genre,,$description,,$image,,$price,,$condition,,$seller,,\n");
+        fclose($myfile);
+        header("location: ../Web_pages/Message.php?message=SuccessfullyAddedBook");
+        exit();  
+    }
+    
+}
+
+

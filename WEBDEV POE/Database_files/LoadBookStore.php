@@ -16,9 +16,9 @@ $adminQuery = "CREATE TABLE $tableAdmin (
 $booksTableQuery = "CREATE TABLE $tableBooks (
     bookID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(100), author VARCHAR(30), 
-    ed VARCHAR(4), cate VARCHAR(8), 
-    cond VARCHAR(13), price VARCHAR(10), 
-    descript VARCHAR(150), img1 VARBINARY(255));"
+    ed VARCHAR(4), genre VARCHAR(20), descript VARCHAR(150), 
+    img1 VARBINARY(255), price VARCHAR(10),cond VARCHAR(20),  
+    seller VARCHAR(10));"
 ;
 //Order table
 $orderTableQuery = "CREATE TABLE $tableOrders (
@@ -46,3 +46,4 @@ INTO TABLE $tableBooks FIELDS TERMINATED BY ',,'");
 
 loadTextData("LOAD DATA LOCAL INFILE 'text_files/orderData.txt'
 INTO TABLE $tableOrders FIELDS TERMINATED BY ','");
+?>

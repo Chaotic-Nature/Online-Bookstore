@@ -33,7 +33,7 @@
                         <section class="about-us">
                               <section id="About">
                                     <h1 style="color: black;">About Us</h1>
-                                    <p>Ebook store was established in the cold winter of the year 2022 by 3 disguished gentlemen, Cibbs , AP and Sir Gareth thee End.</p>
+                                    <p>Ebook store was established in the cold winter of the year 2022 by 3 disguished gentlemen, Cibbs , AP,Double A and Sir Gareth thee End.</p>
                                     
                                     <h2> Contact Us </h2>
 

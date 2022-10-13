@@ -67,11 +67,12 @@
 
                                                       <input type="submit" class="btn btn-primary" value="Register" name="submit">
                                                 </form>
-                                          </div> 
-                                    </div>
-                              </div>  
-                        </section>
-                  </section>    
+                                          </div>
+                                    </div> 
+                              </div>
+                        </div>  
+                  </section>
+            </section>    
       </body>
 </html>
             

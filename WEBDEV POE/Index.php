@@ -9,17 +9,17 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> EBookStore.com </title>
 
-        <link rel = "stylesheet" href="styling/style.css">
+        <link rel = "stylesheet" href="styling/style.css?v=<?php echo time();?>">
+        
         <!-- FONT -->
         <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
-        <!-- SEARCH/FONT -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
         <!-- THE ICONS -->
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+        
+        <link rel="stylesheet" href="css/font-awesome.css?v=<?php echo time();?>">
     </head>
     <body style="font-family : Verdana, sans-serif">
         <!--HOME PAGE-->
@@ -36,7 +36,7 @@
                                 <li> <a href="Index.php"> Home </a> </li>
                                 <li> <a href="#Foot"> About Us</a> </li>
                                 <li> <a href="#Sale"> Books for sale! </a> </li>
-                                <li> <a href="./Web_pages/Sell.php"> Sell your books here! </a> </li>
+                                <li> <a href="#Involved"> Sell your books here! </a> </li>
                                 <li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>
                             </ul>
                         </div>
@@ -45,14 +45,13 @@
                     <hr>
                     <div class ="text-box">
                         <h1><b> Welcome To EBookStore </b></h1>
-                        <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks</p>
+                        <p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks  </p>
                         <a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>
                     </div>
                 </section>
             </section>
             
             <section class="icons-container">
-
             <div class="icons">
 
             <i class="fas fa-plane"></i>
@@ -102,10 +101,22 @@
             <section class = "book-section">
             <section id = "Sale">
                 
-                        <div class="books-grid">
-                        <h1 class="Book-Head">For The Bookworms</h1>
-                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                        <h1 class="heading">Our<span>Products</span></h1>
+
+                            <br>
+                            <br>
+                            
+                            
                             <!-- Add the search file name -->
+                            <!-- THE SEARCH BAR (DELETED) 
+
                            <div id="search-bar" class="pull-right">
                             <form action="search.php"    
                                 method="get" 
@@ -125,10 +136,28 @@
                             <img src="images/search.png"
                                 width="20">
                             </button>
+
                             </div>
                             </form>
-                            </div>
-                            <div class 
+                           </div>
+                        </div>
+                            </div>-->
+            </section>
+            </section>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            
+
+                            <br>
+                            <br>
+                            <br>
+                            
+
                               <?php 
                                     include_once('./Database_files/DBConn.php');
                                     $selectQuery = "SELECT * FROM tblBooks;";
@@ -142,22 +171,40 @@
                                     //The loop uses html and css to display every book in the table.
                                     while (($Row = mysqli_fetch_assoc($selectQueryResult)) !== null)
                                     {
-                                          echo '<div class = "books">';
-                                          echo '<div>Title: ' .$Row['title'] . '</div>';
-                                          echo '<div>R '. $Row['price']. '</div>';
-                                          echo '<div>';
-                                          echo '<img src='. $Row['img1'] . '>';
-                                          echo '</div>';
-                                          echo "<div>
-                                                      <button id='msg-seller'>Contact seller</button>
-                                                      <button id='atc-btn'>Add to cart</button>
-                                                </div>";
-                                          echo '</div>';
+                                        echo '<section class="product" id="product">';
+                                        echo '<div class="product-slider">';
+                                            echo '<div class="wrapper">';
+                                                echo '<div class="box">';
+                                                    echo '<img src='. $Row['img1'] . ' alt="">';
+                                                    echo '<br>';
+                                                    echo '<br>';
+                                                    echo '<br>';
+                                                    echo '<div class="title">Book Title:'.$Row['title'].'</div>';
+                                                    echo '<div class="price">Price: R'. $Row['price'].'</div>';
+                                                    echo '<div class="btnCart">';
+                                                    echo '<p> add to cart </p>';
+                                                    echo '</div>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '</section>';
                                     }
                                         ?>
-                                    </div>
-                                </div>
-            </section>
+                                
+                                <!-- original
+
+                                echo '<div class= "books">';
+                                            echo '<div>Title: ' .$Row['title'] . '</div>';
+                                            echo '<div>R '. $Row['price']. '</div>';
+                                            echo '<div>';
+                                                echo '<img src='. $Row['img1'] . ' width="150" height="200">';
+                                            echo '</div>';
+                                            echo "<div class = 'btn-book'>
+                                                      <button class = 'contact-btn' id='msg-seller'>Contact seller</button>
+                                                      <button class = 'cart-btn' id='atc-btn' style='color: white'>Add to cart</button>
+                                                </div>";
+                                          echo '</div>';
+                                -->
             </section>
 
             <!-- ORIGINAL CODE -->
@@ -172,6 +219,155 @@
                         Tel: 069 210 420</br>
                         Location:
                     </p>-->
+
+            <h1 class="heading">Sell Your<span>Books</span></h1>
+            <br>
+            <br>
+
+            <!-- Sell Section -->
+            <section style="color: black" class="getInvolved">
+            <section id="Involved">
+            <h1 style="color: black;"><b>Sell Your Books</b> </h1>
+            <p>Want to sell your books? Then fill in the details of your book below and let us sell them for you</p>
+
+            <!-- Sell Section -->
+
+            <div class="getInvolved">
+            <form name="sell-book" action="form_processing/sell_books_fp.php" method="POST" enctype="multipart/form-data">
+            
+            <div class="Options">
+            <label for="Choose_One">What Condition Is The Book In?</label>
+            <select name="Choose_One" required id="Choose_One">
+                <option value="">Please Choose A Condition</option>
+                <option value="bad">Bad</option>
+                <option value="good">Good</option>
+                <option value="excellent">Excellent</option>
+            </select>
+            </div>
+            
+            <div class = "inputField">
+            <label for="BookName">Name Of The Book</label>
+            <input name="BookName" required type="text" id="FirstName"/>
+
+            <label for="AuthorName">Author Of The Book</label>
+            <input name="AuthorName" required type="text" id="LastName"/>
+
+            <label for="Genre">The Book's Genre</label>
+            <input name="Genre" required type="text" id="Genre"/>
+           
+            <label for="Description">Book's Description(Summary)</label>
+            <input name="Description" required type="text" id="Description"/>
+
+            <label for="Price">Book's Original Price</label>
+            <input name="Price" required type="text" id="Contact_Number"/>
+
+            <label for="Student_Number">Enter Your Student Number</label>
+            <input type="text" name="seller" required type="text" id="StudentNumber">
+            
+            </div>
+
+        <div class="file-select">
+        <label for="Book_image">Select The Book Cover: </label>
+        <input type="file" name="image" required>
+        </div>
+
+        <div class="submit-form">
+        <input name="submit" type="submit" value="Submit Enquiry"/>
+        </div>
+        
+            </form>
+            </div>
+            </section>
+            </section>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <section class="writer" id="writer">
+            <h1 class="heading">The <span>Owners</span></h1>
+            <div class="box-container">
+                <div class="box">
+                    <img src="images/Skippy.jpg" alt="">
+                    <h3>Cibrian Hofsta</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Distinctio, quo amet labore voluptate maxime tenetur porro
+                    </p>
+                   <div class="social-media">
+                       <i class="fa fa-facebook"></i>
+                       <i class="fa fa-instagram"></i>
+                       <i class="fa fa-twitter"></i>
+                       <i class="fa fa-linkedin"></i>
+                       <i class="fa fa-telegram"></i>
+                   </div>
+                </div>
+                <div class="box">
+                    <img src="images/Aphiwe1.jpg" alt="">
+                    <h3>Aphiwe Meslane</h3>
+                    <p>
+                        Born in South Africa when he was being born he came out of the womb reading a shakespearn book,
+                        at the age of six he graduated from Harvard university and one day he meet 3 other legends 
+                        like him and the online bookstore was born.
+                    </p>
+                    <div class="social-media">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-linkedin"></i>
+                        <i class="fa fa-telegram"></i>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="images/Thomas.jpg" alt="">
+                    <h3>Gareth Prinsloo</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Distinctio, quo amet labore voluptate maxime tenetur porro 
+                    </p>
+                    <div class="social-media">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-linkedin"></i>
+                        <i class="fa fa-telegram"></i>
+                    </div>
+                </div>
+                    <div class="box">
+                    <img src="images/Ronny.jpg" alt="">
+                    <h3>Aaron Fourie</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Distinctio, quo amet labore voluptate maxime tenetur porro 
+                    </p>
+                    <div class="social-media">
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-linkedin"></i>
+                        <i class="fa fa-telegram"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
     <section class = "footee">
     <section id = "Foot">
     <footer class="footer">

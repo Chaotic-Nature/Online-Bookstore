@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Login and Register</title>
-        <link rel="stylesheet" href="../styling/LoginStyle.css">
+        <link rel="stylesheet" href="../styling/LoginStyle.css?v=<?php echo time();?>">
         <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
@@ -55,7 +55,8 @@
 
                 <input type="text" id="Username" name="Username" class="input-field" placeholder="Enter Username" required>
                 <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
-
+                <input type="email" id="email" name="email" class="input-field" placeholder="Enter Email" required>
+                <!-- <input type="text" class="input-field" placeholder="Enter Username" required> -->
                 <input type="Password" id="Password" name="Password" class="input-field" placeholder="Enter Password" required>
                 <!--<input type="text" class="input-field" placeholder="Enter Password" required>-->
 
@@ -102,8 +103,7 @@
                 </div>
             </div>
         </div>
-            </section>
-            </section>
+            
 
         <script>
             var x = document.getElementById("login");
