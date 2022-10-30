@@ -154,6 +154,34 @@ nav .fa {
     border-radius: .5rem;
     font-size:300%;
 }
+.text-welcome {
+    text-align:center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.text-welcome .theMessage p{
+    font-size: 40px;
+    font-weight: 600;
+}
+.text-welcome .theMessage h1{
+    font-size: 55px;
+    line-height: 160px;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    background: url('../images/back.png');
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    animation: back 20s linear infinite;
+}
+@keyframes back {
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
 .book-section h1 {
     font-size: 36px;
     font-weight: 600;

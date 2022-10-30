@@ -73,21 +73,24 @@
                         <i class ="fa fa-bars" onclick="showMenu()"></i>
                     </nav>
                     <hr>
-                    <div class ="text-box">
                         <?php
                             if(isset($_SESSION['studentNumber'])){
                                 //if the user is logged in//
-                                echo "<h1><b>Welcome back " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</b></h1>";
+                                echo "<div class ='text-welcome'>";
+                                echo "<div class = 'theMessage'>";
+                                echo "<p><b>Welcome </b></p>". "<h1><b>" . $_SESSION['name'] . " " . $_SESSION['surname'] . "</b></h1>";
+                                echo "</div>";
+                                echo "</div>";
                             }
                             else{
                                 //if the user is logged out//
+                                echo '<div class ="text-box">';
                                 echo "<h1><b> Welcome To EBookStore </b></h1>";
                                 echo '<p style="color:white"> Ebook Store is an online market place for students that are looking to buy or sell their used textbooks  </p>';
                                 echo '<a href="./Web_pages/Login.php" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0" class="visit-btn">Click Here To Login</a>';
+                                echo "</div>";
                             }                   
                         ?>
-                        
-                    </div>
                 </section>
             </section>
             
