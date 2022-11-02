@@ -39,7 +39,8 @@
                                 echo '<li> <a href="#writer"> About Us</a> </li>';
                                 echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                 echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
-                                echo '<li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>';
+                                echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
+                                echo '<li> <a href="./Web_pages/Message.php"> Notifications <span id="count">4</span></a> </li>';
                             }
                             else{
                                 //when the user is logged out it displays these links//
@@ -226,6 +227,9 @@
                                                     echo '<div class="price">Price: R'. $Row['price'].'</div>';
                                                     echo '<div class="btnCart">';
                                                     echo '<p> add to cart </p>';
+                                                    echo '</div>';
+                                                    echo '<div class="btnCart">';
+                                                    echo '<a style="text-decoration:none; color:black" href="Buyer/send_msg.php?id='.$Row['bookID'].'"><p>Message</p></a>';
                                                     echo '</div>';
                                         echo '</div>';
                                         echo '</div>';

@@ -10,7 +10,8 @@ include("../Database_files/DBConn.php");
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <script src="https://kit.fontawesome.com/18e4557fb5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"></script>
     <link href="../styling/Admin.css?v=<?php echo time(); ?>" rel="stylesheet" />
     <link href="../styling/style.css?v=<?php echo time(); ?>" rel="stylesheet" />
 
@@ -34,8 +35,7 @@ include("../Database_files/DBConn.php");
                 <li><a href="../Admin/Users.php">Users</a></li>
                 <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
                 <li><a class="nav-link" href="../Admin/Orders.php">Orders</a></li>
-                <li><a class="nav-link" href="../Admin/Orders.php">Updates</a></li>
-
+                <li><a class="nav-link" href="../Admin/Messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">4</span></i></a></li>
 
                 <!-- logged in user information -->
                 <?php
