@@ -1,4 +1,4 @@
-<?php ?>
+
 <?php 
 session_start();
 include_once('../Database_files/DBConn.php');
@@ -6,6 +6,21 @@ $id=$_GET['id'];
 
 	$query=mysqli_query($DBConn,"SELECT * from tblBooks where bookID='$id'");
 	$row=mysqli_fetch_array($query);
+
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $msg = $_POST['msg'];
+    $date = date('y-m-d h:i:s');
+    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tblmessage(name, msg, cr_date) VALUES('$name', '$msg', '$date')");
+    if($sql_INSERT)
+    {
+        header('location:../Admin/view-messages.php?message=message send successfully"');
+    }
+    else{
+        echo mysqli_error($DBConn);
+        exit;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,10 +50,10 @@ $id=$_GET['id'];
           </div>
           <i class ="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-        <div class="container">
+        <div class="container" id="center">
           <div class="title">Check book availability form</div>
           <div class="content">
-            <form action="../Admin/view-messages.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
+            <form action="send_msg.php?id=<?php echo $id; ?>" method="POST" enctype="multipart/form-data">
               <div class="user-details">
                 <div class="form-group">
                   <span class="details">Name</span>
