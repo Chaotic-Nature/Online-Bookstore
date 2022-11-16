@@ -42,7 +42,56 @@
             </nav>
         </div>
 
+<<<<<<< HEAD
         <div class="container">
+=======
+    <title>Admin Panel</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="side-menu">
+
+        <!-- Navbar Brand-->
+        <h1 class="brand-name"><a href="../Index.php">EBooksStore</a></h1>
+
+        <!-- Navbar-->
+        <nav>
+            <ul>
+
+                <li><a href="../Web_pages/admindash.php">Dashboard</a></li>
+                <li><a href="../Admin/Users.php">Users</a></li>
+                <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
+                <li><a class="nav-link" href="../Admin/Orders.php">Orders</a></li>
+                 <?php
+
+                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                    if ($count = mysqli_num_rows($query)) 
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">'.$count.'</span></i></a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">0</span></i></a></li>';
+                    }
+                ?>
+
+                <!-- logged in user information -->
+                <?php
+                if (isset($_SESSION['ADusername'])) : ?>
+                    <div class="small">Logged in as:</div>
+                    <p><strong><?php echo $_SESSION['ADusername']; ?></strong></p>
+
+                <?php endif ?>
+                <li><a href="../inc_files/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+>>>>>>> eb40f3d58180d86195e35246a0f279e35f5480b8
 
         <!-- shows the cards and their info -->
         <div class="content">

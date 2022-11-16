@@ -27,6 +27,7 @@ include("../Database_files/DBConn.php");
             <nav>
                 <ul>
 
+<<<<<<< HEAD
                     <li><a class="nav-link" href="../Web_pages/admindash.php">Dashboard</a></li>
                     <li><a class="nav-link" href="../Admin/Users.php">Users</a></li>
                     <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
@@ -47,6 +48,42 @@ include("../Database_files/DBConn.php");
                 </ul>
             </nav>
         </div>
+=======
+        <!-- Navbar Search-->
+
+        <!-- Navbar-->
+        <nav>
+            <ul>
+
+                <li><a class="nav-link" href="../Web_pages/admindash.php">Dashboard</a></li>
+                <li><a class="nav-link" href="../Admin/Users.php">Users</a></li>
+                <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
+                <li><a class="nav-link" href="../Admin/Orders.php">Orders</a></li>
+                  <?php
+
+                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                    if ($count = mysqli_num_rows($query)) 
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">'.$count.'</span></i></a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">0</span></i></a></li>';
+                    }
+                ?> 
+                <div class="small">Logged in as:</div>
+                <!-- logged in user information -->
+                <?php
+                if (isset($_SESSION['ADusername'])) : ?>
+
+                    <p><strong><?php echo $_SESSION['ADusername']; ?></strong></p>
+
+                <?php endif ?>
+                <li><a class="nav-link" href="../inc_files/logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+>>>>>>> eb40f3d58180d86195e35246a0f279e35f5480b8
 
 
         <div class="container">
