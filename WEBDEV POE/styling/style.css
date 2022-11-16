@@ -108,6 +108,33 @@ nav {
 nav .fa {
     display:none;
 }
+#wrapper{
+    width: 90%;
+    margin: auto;
+    padding: 12rem 0 14rem 0;
+    text-align: center;
+    justify-content: center;
+}
+#inbox-wrapper{
+    background-color:#fff;
+    position:absolute;
+    top:28%;
+    right: 0;
+    left: 0;
+    height: 60vh;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 20px;
+}
+#inbox-wrapper h1{
+    font-size: 20px;
+    padding-top: 2%;
+    
+}
+#inbox-wrapper, .msg-status{
+    font-size: 18px;
+}
+#inbox-wrapper
 .modal{
     position: absolute;
     top: 0;

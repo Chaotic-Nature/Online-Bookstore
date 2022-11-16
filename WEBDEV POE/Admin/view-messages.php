@@ -1,7 +1,26 @@
 <?php
 session_start();
 include("../Database_files/DBConn.php");
+$id=$_GET['id'];
 
+	$query=mysqli_query($DBConn,"SELECT * from tblBooks where bookID='$id'");
+	$row=mysqli_fetch_array($query);
+
+if(isset($_POST['submit'])){
+    $userID = $id;
+    $msg = $_POST['msg'];
+    $date = date('y-m-d h:i:s');
+    $status = 1;
+    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tbladminmsg(userID, msg, status, cr_date) VALUES('$userID', '$msg', '$status', '$date')");
+    if($sql_INSERT)
+    {
+        header('location:../Admin/view-messages.php?message=reply sent successfully"');
+    }
+    else{
+        echo mysqli_error($DBConn);
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +33,7 @@ include("../Database_files/DBConn.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"></script>
     <link href="../styling/Admin.css?v=<?php echo time(); ?>" rel="stylesheet" />
     <link href="../styling/style.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    
 
     <title>View Messages Page</title>
     <style>
@@ -71,44 +91,44 @@ include("../Database_files/DBConn.php");
                 <div class="new-students">
 
                     <h1>Messages</h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Message</th>
-                                <th>Date sent</th>
-                                <th>Yes</th>
-                                <th>No</th>
-                            </tr>
-                        </thead>
+                    <?php
+                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                    if ($total_orders = mysqli_num_rows($query)) {
+                        while ($row = mysqli_fetch_array($query)) {
+                        ?>
+                                        
+                        <form method="POST" action="./Admin/view-messages.php?id=<?php echo $Row['id']; ?>">
+                                <div class="user-details">
+                                <div class="input-box">
+                                    <span class="details">Sender Name</span>
+                                    <input type="text" name="title" placeholder="name" value="<?php echo $row['name']; ?> " readonly>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Message</span>
+                                    <input type="text" name="title" placeholder="message" value="<?php echo $row['msg']; ?> " readonly>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Send date</span>
+                                    <input type="text" name="title" placeholder="message" value="<?php echo $row['cr_date']; ?> " readonly>
+                                </div>
+                                    <span class="details">Enter Reply </span>
+                                    <textarea class="form-control" rows="3" name="msg" required></textarea>  
+                                    </div>
+                                <div class="button">
+                                <input type="submit" name="submit" value="Send Message">
+                            </div>
+                            </form>
+                                                        
+                                        
 
-                        <tbody>
-                            <?php
-
-
-                            $query = mysqli_query($DBConn, "SELECT * from tblmessage");
-                            if ($total_orders = mysqli_num_rows($query)) {
-                                while ($row = mysqli_fetch_array($query)) {
-                            ?>
-                                    <tr>
-                                        <td><?php echo $row['msg_id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['msg']; ?></td>
-                                        <td><?php echo $row['cr_date']; ?></td>                                       
-                                        <td><input type='checkbox' name='check[$i]' value='"<?php echo $row['userID'];?>"'/></td>
-                                        <td><input type='checkbox' name='check[$i]' value='"<?php echo $row['userID'];?>"'/></td>
-                                </tr>
                                 <?php
                                 }
                             } else {
                                 echo '<p> No Messages</p>';
                             }
                                 ?>
-                                    </tr>
-
-                        </tbody>
-                    </table>
+                        </div>
+                        </div>  
                 </div>
 
             </div>

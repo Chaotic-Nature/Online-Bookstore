@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Ebook Store Home </title>
-    <link rel = "stylesheet" href="../styling/message.css?v=<?php echo time();?>">
+    <link rel = "stylesheet" href="../styling/style.css?v=<?php echo time();?>">
     <script src="https://kit.fontawesome.com/18e4557fb5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"></script>
 
@@ -40,7 +40,6 @@ if(isset($_POST['submit'])){
     
   </head>
   <body>
-    <div id="header-background"></div>
     <section class ="header">
     
       <section id="home">
@@ -55,40 +54,38 @@ if(isset($_POST['submit'])){
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
               <li><a href="../Index.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-house"></i></span> Home </a> </li>
-              <li> <a href="./create-msg.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-plus"></i></span> Create new </a> </li>
+              <li> <a href="./send_msg.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-plus"></i></span> Create new </a> </li>
               <li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>
-              <li> <a href="./sent.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-paper-plane"></i></span> Sent <span id="count">0</span></a> </li>
             </ul>
           </div>
           <i class ="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-          <div id="text">
-            <h1>Your Message Dashboard<h1><br><br>
-            <p> Find out more about your Orders. Message Us Anytime<p>
-          </div>
-          <section id="content">
+        <hr>
+        <div id="inbox-wrapper">
           <div id ="recent-msg-wrapper1">
               <div id="heading">
-                <h1>Inbox</h1>
+              <h1 class="heading">Your<span>Inbox</span></h1>
+                
                 <div id="update"><button onClick="window.location.href=window.location.href" class="visit-btn">Refresh<span><i class="fa-solid fa-arrows-rotate"></i></span></button></div>               
                 <hr>
               </div>     
               
               <?php
                 if(isset($_SESSION['studentNumber'])){
-                  if($query = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE 'status' = 1 AND 'msg_target_user' != null")){
+                  if($query = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE 'status' = 1 AND 'userID' = ".$_SESSION['id']."")){
                   if ($total_orders = mysqli_num_rows($query)) {
                     while (($Row = mysqli_fetch_assoc($query)) !== null) {
                       echo '<div id="wrapper">';
-                      echo '<h2 class="Sender-Name">'.$Row['AD_fName'].'</h2>';
-                      echo '';
+                      echo '<h2 class="Sender-Name">'.$Row['name'].'</h2>';
+                      echo '<div class="msg">'.$Row['msg'].'</div>';
+                      echo '<div class="time-sent">'.$Row['cr_date'].'</div>';
                       echo '</div>';
                     }
                   }
                   else
                   {
                     echo '<div id="wrapper">';
-                      echo '<div class="msg-status">No messages  <br> Send a message and we will get back to you';
+                      echo '<div class="msg-status">No messages  <br><br>Send a message and we will get back to you';
                       
                       echo '</div>';
                     echo '</div>';
@@ -103,7 +100,7 @@ if(isset($_POST['submit'])){
                 }
               ?>
           </div>    
-          
+          </div>
           </section>
         <!--<div class="container" id="center">
           <div class="title">Check book availability form</div>
