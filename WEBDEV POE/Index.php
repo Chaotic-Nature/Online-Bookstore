@@ -387,8 +387,10 @@
                     <img src="images/Thomas.jpg" alt="">
                     <h3>Gareth Prinsloo</h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Distinctio, quo amet labore voluptate maxime tenetur porro 
+                        I was born and raised on the continient of Fubaslter , a place where books held powerful meanings and conveyed ones status in society. 
+                        All my life i have sought knowledge and this is what books brought me , but beware . Knowledge comes at a price... usually in the form of a 2 for one special at 599.
+                        but i digress, my name is gareth and this is but a humble tale of how a young man made it big selling books. if you want to hear more follow my ig @ greatestmadladgarry. 
+                        
                     </p>
                     <div class="social-media">
                         <i class="fa fa-facebook"></i>
