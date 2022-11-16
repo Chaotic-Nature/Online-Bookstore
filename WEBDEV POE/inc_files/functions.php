@@ -1,4 +1,5 @@
 <?php
+
 function loadTextData($loadDataQuery)
 {
     global $DBConn;
@@ -118,7 +119,7 @@ function invalidEmail($email){
 function createUser($DBConn, $Fname, $Lname, $studNum, $username, $email, $pwd)
 {
     $verified = 'n';
-    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd, veried) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $sqlQuery = "INSERT INTO tblUser (fName, lName, studNum, username, email, pwd, verified) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
         header("location: ../Web_pages/Login.php?error=createstmntFailed");
@@ -152,13 +153,13 @@ function isEmptyLogin($studentNum, $username, $password){
 function loginUser($DBConn, $studentNum, $password){
     $userExists = studNumExists($DBConn, $studentNum);
     if($userExists === FALSE){
-        header("location: ../Web_pages/Login.php?error=incorrectLogin");
+        header("llocation: ../Web_pages/Message.php?message=incorrectLogin");
         exit();
     }
     $pwdHashed = $userExists["pwd"];
     $passwordCheck = password_verify($password, $pwdHashed);
     if($passwordCheck === FALSE){
-        header("location: ../Web_pages/Login.php?error=passwordsDontMatch");
+        header("location: ../Web_pages/Message.php?message=passwordMismatch");
         exit();
     }
     else if($passwordCheck === TRUE){
@@ -215,20 +216,20 @@ function adminExists($DBConn, $username)
 function loginAdmin($DBConn, $username, $password){
     $adminExists = adminExists($DBConn, $username);
     if($adminExists === FALSE){
-        header("location: ../Web_pages/AdminLogin.php?error=incorrectLogin");
+        header("location: ../Web_pages/Message.php?message=incorrectAdminLogin");
         exit();
     }
     $pwdHashed = $adminExists["AD_pwd"];
     $passwordCheck = password_verify($password, $pwdHashed);
     if($passwordCheck === FALSE){
-        header("location: ../Web_pages/AdminLogin.php?error=passwordsDontMatch");
+        header("location: ../Web_pages/Message.php?message=passwordMismatch");
         exit();
     }
     else if($passwordCheck === TRUE){
         session_start();
         $_SESSION['ADusername'] = $adminExists['AD_username'];
         $_SESSION['ADFname'] = $adminExists['AD_fName'];
-        header("location: ../Web_pages/admindash.php?LoggedInAsAdmin");
+        header("location: ../Web_pages/admindash.php");
         exit();
     }
 }
@@ -261,7 +262,7 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
 
     $userExists = studNumExists($DBConn, $seller);
     if($userExists === FALSE){
-        header("location: ../Web_pages/Sell.php?error=userDontExist");
+        header("location: ../Web_pages/Message.php?message==userDontExist");
         exit();
     }
     /*$query = "SELECT userID FROM tblUser WHERE studNum = '$seller'";
@@ -277,7 +278,7 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
     $sqlQuery = "INSERT INTO tblBooks (title, author, ed, genre, descript, img1, price, cond, seller) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($DBConn);
     if(!mysqli_stmt_prepare($stmt, $sqlQuery)){
-        header("location: ../Web_pages/Sell.php?error=CouldntSellBook");
+        header("location: ../Web_pages/Message.php?message=bookEntryError");
         exit();
     }
     else{

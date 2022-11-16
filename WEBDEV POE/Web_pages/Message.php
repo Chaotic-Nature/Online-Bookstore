@@ -27,6 +27,15 @@
                         if($_GET['message'] == "unverified"){
                             echo "<h2>Your account is still being validated. Please be patient.</h2>";
                         }
+                        if($_GET['message'] == "incorrectLogin"){
+                            echo "<h2>Please ensure that all your login details are correct.</h2>";
+                        }
+                        if($_GET['message'] == "passwordMismatch"){
+                            echo "<h2>Please ensure that your passwords are the same.</h2>";
+                        }
+                        if($_GET['message'] == "BookentryError"){
+                            echo "<h2>Something went wrong. Couldnt add book.</h2>";
+                        }
                     }
                 ?>
                 <a href="../Index.php">Back</a>

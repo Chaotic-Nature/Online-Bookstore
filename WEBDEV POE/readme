@@ -8,3 +8,25 @@ To test student login:
 username: cibby458
 student number: ST10101076
 password: 11111111
+
+# Web-Dev-Poe
+HOW TO RUN OUR SITE
+
+STEP:
+0. - Put the website folder inside the htdocs folder in your local XAMPP file.
+
+
+1. - Run XAMPP Control Panel as an administrator.
+2. - Start Apache and MySql.
+3. - Click the config button for Apache.
+4. - Select PHP(php.ini).
+5. - Press Ctrl+f to bring up the quick search tool.
+6. - Type "[MySQLi]" into the textbox and ensure the search direction is down.
+7. - Click "Find Next" then close the quick search tool.
+8. - Locate the line that says "mysqli.allow_local_infile = on".
+9. - If there is a semi-colon before "mysqli.allow_local_infile = on", remove it
+        and ensure that it is = on.
+10. - Press Ctrl+s to save the file.
+11. - Restart XAMPP Control Panel and start Apache and MySQL.
+12. - Click the admin button next to MySQL.
+13. - Create a database named "bookstore".
