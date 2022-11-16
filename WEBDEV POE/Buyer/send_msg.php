@@ -8,13 +8,15 @@ $id=$_GET['id'];
 	$row=mysqli_fetch_array($query);
 
 if(isset($_POST['submit'])){
+    $id=$_GET['id'];
     $name = $_POST['name'];
     $msg = $_POST['msg'];
     $date = date('y-m-d h:i:s');
-    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tblmessage(name, msg, cr_date) VALUES('$name', '$msg', '$date')");
+    $status = 1;
+    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tblmessage(name, msg, cr_date, userID, status) VALUES('$name', '$msg', '$date', '$id', '$status')");
     if($sql_INSERT)
     {
-        header('location:../Admin/view-messages.php?message=message send successfully"');
+        header('location:../Admin/view-messages.php?id=<?php echo '.$id.'?>message=message send successfully"');
     }
     else{
         echo mysqli_error($DBConn);

@@ -72,11 +72,11 @@ if(isset($_POST['submit'])){
               
               <?php
                 if(isset($_SESSION['studentNumber'])){
-                  if($query = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE 'status' = 1 AND 'userID' = ".$_SESSION['id']."")){
+                  $id=$_GET['id'];
+                  $query = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE userID='$id' AND status=1");
                   if ($total_orders = mysqli_num_rows($query)) {
-                    while (($Row = mysqli_fetch_assoc($query)) !== null) {
+                    while (($Row = mysqli_fetch_assoc($query))) {
                       echo '<div id="wrapper">';
-                      echo '<h2 class="Sender-Name">'.$Row['name'].'</h2>';
                       echo '<div class="msg">'.$Row['msg'].'</div>';
                       echo '<div class="time-sent">'.$Row['cr_date'].'</div>';
                       echo '</div>';
@@ -92,7 +92,7 @@ if(isset($_POST['submit'])){
                   }
 
                 }
-              }
+              
                 else
                 {
                   echo '<script>alert("Login to access message content")</script>';

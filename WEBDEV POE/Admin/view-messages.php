@@ -1,20 +1,17 @@
 <?php
 session_start();
 include("../Database_files/DBConn.php");
-$id=$_GET['id'];
-
-	$query=mysqli_query($DBConn,"SELECT * from tblBooks where bookID='$id'");
-	$row=mysqli_fetch_array($query);
 
 if(isset($_POST['submit'])){
-    $userID = $id;
     $msg = $_POST['msg'];
     $date = date('y-m-d h:i:s');
     $status = 1;
-    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tbladminmsg(userID, msg, status, cr_date) VALUES('$userID', '$msg', '$status', '$date')");
+    $id = $_POST['id'];
+    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tbladminmsg(userID, msg, status, cr_date) VALUES('$id', '$msg', '$status', '$date')");
     if($sql_INSERT)
     {
-        header('location:../Admin/view-messages.php?message=reply sent successfully"');
+        header('location:view-messages.php?message=reply sent successfully"');
+
     }
     else{
         echo mysqli_error($DBConn);
@@ -97,19 +94,23 @@ if(isset($_POST['submit'])){
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                                         
-                        <form method="POST" action="./Admin/view-messages.php?id=<?php echo $Row['id']; ?>">
+                        <form method="POST" action="../Admin/view-messages.php?id=<?php echo $row['userID']; ?>">
                                 <div class="user-details">
                                 <div class="input-box">
                                     <span class="details">Sender Name</span>
-                                    <input type="text" name="title" placeholder="name" value="<?php echo $row['name']; ?> " readonly>
+                                    <input type="text" name="name" placeholder="name" value="<?php echo $row['name']; ?> " readonly>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Sender Name</span>
+                                    <input type="hidden" name="id" placeholder="id" value="<?php echo $row['userID']; ?> " readonly>
                                 </div>
                                 <div class="input-box">
                                     <span class="details">Message</span>
-                                    <input type="text" name="title" placeholder="message" value="<?php echo $row['msg']; ?> " readonly>
+                                    <input type="text" name="msg" placeholder="message" value="<?php echo $row['msg']; ?> " readonly>
                                 </div>
                                 <div class="input-box">
                                     <span class="details">Send date</span>
-                                    <input type="text" name="title" placeholder="message" value="<?php echo $row['cr_date']; ?> " readonly>
+                                    <input type="text" name="send_date" placeholder="message" value="<?php echo $row['cr_date']; ?> " readonly>
                                 </div>
                                     <span class="details">Enter Reply </span>
                                     <textarea class="form-control" rows="3" name="msg" required></textarea>  
