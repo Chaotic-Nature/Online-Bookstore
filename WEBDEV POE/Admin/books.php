@@ -35,7 +35,18 @@ include("../Database_files/DBConn.php");
                 <li><a href="../Admin/Users.php">Users</a></li>
                 <li><a class="nav-link" href="../Admin/books.php">Books</a></li>
                 <li><a class="nav-link" href="../Admin/Orders.php">Orders</a></li>
-                <li><a class="nav-link" href="../Admin/Messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">4</span></i></a></li>
+                 <?php
+
+                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                    if ($count = mysqli_num_rows($query)) 
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">'.$count.'</span></i></a></li>';
+                    }
+                    else
+                    {
+                        echo '<li><a class="nav-link" href="../Admin/view-messages.php">Messages<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">0</span></i></a></li>';
+                    }
+                ?>
 
                 <!-- logged in user information -->
                 <?php

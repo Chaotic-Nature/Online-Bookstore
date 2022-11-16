@@ -173,6 +173,7 @@ function loginUser($DBConn, $studentNum, $password){
             session_start();
             $_SESSION['name'] = $userExists['fName'];
             $_SESSION['surname'] = $userExists['lName'];
+            $_SESSION['id'] = $userExists['userID'];
             $_SESSION['studentNumber'] = $userExists['studNum'];
             exit();
         }
@@ -289,9 +290,14 @@ function CreateBookAd($DBConn, $title, $author, $edition, $genre, $description, 
         fclose($myfile);
         header("location: ../Web_pages/Message.php?message=SuccessfullyAddedBook");
         exit();  
-    }
-    
+    }  
 }
+
+
+
+
+
+
 
         
 

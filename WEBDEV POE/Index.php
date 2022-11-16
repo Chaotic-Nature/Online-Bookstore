@@ -9,7 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title> EBookStore.com </title>
-
+        <script src="https://kit.fontawesome.com/18e4557fb5.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"></script>
         <link rel = "stylesheet" href="styling/style.css?v=<?php echo time();?>">
         
         <!-- FONT -->
@@ -39,14 +40,19 @@
                                 echo '<li> <a href="#writer"> About Us</a> </li>';
                                 echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                 echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
+                                echo '<li> <a href="Buyer/inbox.php?id='. $_SESSION['id'] .'"> <i class="fa-sharp fa-solid fa-envelope"></i> <span id="count">4</span></a> </li>';
+                                
+                                echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">4</span></a> </li>';
                                 echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
-                                echo '<li> <a href="./Web_pages/Message.php"> Notifications <span id="count">4</span></a> </li>';
+                               
                             }
                             else{
                                 //when the user is logged out it displays these links//
                                 echo'<li> <a href="Index.php"> Home </a> </li>';
                                 echo'<li> <a href="#writer"> About </a> </li>';
                                 echo'<li> <a href="#Sale"> Books for sale! </a></li>';
+                                echo '<li> <a href="Buyer/inbox.php"> <i class="fa-sharp fa-solid fa-envelope"></i> <span id="count">0</span></a> </li>';
+                                echo '<li> <a href="./Web_pages/cart.php"> <i class="fas fa-shopping-cart"></i> <span id="count">0</span></a> </li>';
                                 echo'<li> <a href="./Web_pages/Login.php"> Login/Signup </a> </li>';
                             }
                                 ?>
