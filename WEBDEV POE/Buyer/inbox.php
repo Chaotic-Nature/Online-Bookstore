@@ -55,7 +55,18 @@ if(isset($_POST['submit'])){
             <ul>
               <li><a href="../Index.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-house"></i></span> Home </a> </li>
               <li> <a href="./send_msg.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-plus"></i></span> Create new </a> </li>
-              <li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>
+              <?php
+              $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                if ($count = mysqli_num_rows($query)) 
+                {
+                  echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">'.$count.'</span></a> </li>';
+                }
+                else
+                {
+                  echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>';
+                }
+              ?>
+              
             </ul>
           </div>
           <i class ="fa fa-bars" onclick="showMenu()"></i>
