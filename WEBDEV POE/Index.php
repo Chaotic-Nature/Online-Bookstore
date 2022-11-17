@@ -41,9 +41,6 @@
                                     echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                     echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
                                     echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
-                                    echo '<li> <a href="Buyer/inbox.php?id='. $_SESSION['id'] .'"> <i class="fa-sharp fa-solid fa-envelope"></i> <span id="count">4</span></a> </li>';
-                                
-                                echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">1</span></a> </li>';
 
                                     $query = mysqli_query($DBConn, "SELECT * from tblmessage");
                                     if ($count1 = mysqli_num_rows($query)) 
@@ -61,7 +58,7 @@
                                     }
                                     else
                                     {
-                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count"> 0</span></a> </li>';
+                                        echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">1</span></a> </li>';
                                     }
 
                                 }
