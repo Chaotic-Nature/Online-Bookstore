@@ -3,7 +3,7 @@ session_start();
 include("../Database_files/DBConn.php");
 
 if(isset($_POST['submit'])){
-    $msg = $_POST['msg'];
+    $msg = $_POST['reply_msg'];
     $date = date('y-m-d h:i:s');
     $status = 1;
     $id = $_POST['id'];
@@ -95,29 +95,33 @@ if(isset($_POST['submit'])){
                         ?>
                                         
                         <form method="POST" action="../Admin/view-messages.php?id=<?php echo $row['userID']; ?>">
-                                <div class="user-details">
-                                <div class="input-box">
-                                    <span class="details">Sender Name</span>
-                                    <input type="text" name="name" placeholder="name" value="<?php echo $row['name']; ?> " readonly>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details">Sender Name</span>
-                                    <input type="hidden" name="id" placeholder="id" value="<?php echo $row['userID']; ?> " readonly>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details">Message</span>
-                                    <input type="text" name="msg" placeholder="message" value="<?php echo $row['msg']; ?> " readonly>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details">Send date</span>
-                                    <input type="text" name="send_date" placeholder="message" value="<?php echo $row['cr_date']; ?> " readonly>
-                                </div>
-                                    <span class="details">Enter Reply </span>
-                                    <textarea class="form-control" rows="3" name="msg" required></textarea>  
+                                
+                                <div id ="margin-container">
+                                    <div class="user-details">
+                                        <div id="background">
+                                            <div class="input-box">
+                                                <input id="user_name" type="text" name="name" placeholder="name" value="<?php echo $row['name']; ?> " readonly>
+                                            </div>
+                                            <div class="input-box">
+                                                <input type="hidden" name="id" placeholder="id" value="<?php echo $row['userID']; ?> " readonly>
+                                            </div>
+                                            <div id="msg-sent-wrapper">
+                                                <div class="input-box">
+                                                    <input id="msg-area" type="text" name="msg" placeholder="message" value="<?php echo $row['msg']; ?> " readonly></textarea>
+                                                </div>
+                                                
+                                                <div class="input-box">
+                                                    <input id="TimeBox" type="text" name="send_date" placeholder="message" value="<?php echo $row['cr_date']; ?> " readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span id="reply-heading"class="details">Enter Reply </span>
+                                        <textarea class="form-control" rows="3" name="reply_msg" required></textarea>  
+                                        </div>
+                                    <div class="button">
+                                    <input type="submit" name="submit" value="Send Message">
                                     </div>
-                                <div class="button">
-                                <input type="submit" name="submit" value="Send Message">
-                            </div>
+                                </div>
                             </form>
                                                         
                                         

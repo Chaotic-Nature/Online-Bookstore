@@ -3,6 +3,8 @@
 $tableAdmin = "tblAdmin";
 $tableBooks = "tblBooks";
 $tableOrders = "tblOrders";
+$tableAdminMsg = "tbladminmsg";
+$tableMessage = "tblmessage";
 
 //Queries to create tables in bookstore.
 //Admin table.
@@ -27,7 +29,23 @@ $orderTableQuery = "CREATE TABLE $tableOrders (
     bookID INT NOT NULL REFERENCES tblBooks(bookID), 
     deliveryDate DATE);"
 ;
-
+//User Message Table
+$userMessageQuery = "CREATE TABLE $tableMessage (
+    msg_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    userID INT NOT NULL REFERENCES tblUser(userID),
+    msg VARCHAR(255),
+    name VARCHAR (100),
+    status INT(2) DEFAULT(0),
+    cr_date DATETIME);"
+;
+//Admin Reply Message Table
+$AdminMessageQuery = "CREATE TABLE $tableAdminMsg (
+    msg_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    userID INT NOT NULL REFERENCES tblUser(userID),
+    msg VARCHAR(255),
+    status INT(2) DEFAULT(0),
+    cr_date DATETIME);"
+;
 /*This method checks if a table exists, deletes it if
 it does, and recreates it with the dummy text file data. 
 It takes arguments for the name of the table to be created and 
@@ -35,6 +53,8 @@ the sql query to create it. The method can be found in CreateTable.php*/
 checkTableExistence($tableAdmin, "$adminQuery");
 checkTableExistence($tableBooks, "$booksTableQuery");
 checkTableExistence($tableOrders, "$orderTableQuery");
+checkTableExistence($tableMessage, "$userMessageQuery");
+checkTableExistence($tableAdminMsg, "$AdminMessageQuery");
 
 //the loadTextData loads text file data into the database. The code for
 //this function exists in the functions.php file.

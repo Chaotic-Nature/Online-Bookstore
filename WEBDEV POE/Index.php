@@ -42,22 +42,22 @@
                                     echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
                                     echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
                                     $query = mysqli_query($DBConn, "SELECT * from tblmessage");
-                                    if ($count = mysqli_num_rows($query)) 
+                                    if ($count1 = mysqli_num_rows($query)) 
                                     {
-                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">  '.$count.'</span></i></a></li>';
+                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count">  '.$count1.'</span></a></li>';
                                     }
                                     else
                                     {
-                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">0</span></i></a></li>';
+                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count"> 0</span></a></li>';
                                     }
                                     $query = mysqli_query($DBConn, "SELECT * from tblorders");
-                                    if ($count = mysqli_num_rows($query)) 
+                                    if ($count2 = mysqli_num_rows($query)) 
                                     {
-                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">   '.$count.'</span></a> </li>';
+                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">   '.$count2.'</span></a> </li>';
                                     }
                                     else
                                     {
-                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">0</span></a> </li>';
+                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count"> 0</span></a> </li>';
                                     }
                                     
                                 }
@@ -168,6 +168,7 @@
 
             //While loop executes for every book in the books table.
             //The loop uses html and css to display every book in the table.
+            
             while (($Row = mysqli_fetch_assoc($selectQueryResult)) !== null)
             {
                 echo '<section class="product" id="product">';
@@ -183,14 +184,17 @@
                                 echo '<div class="btnCart">';
                                 echo '<p> add to cart </p>';
                                 echo '</div>';
-                                echo '<div class="btnCart">';
-                                echo '<a style="text-decoration:none; color:black" href="Buyer/send_msg.php?id='.$Row['bookID'].'"><p>Message</p></a>';
-                                echo '</div>';
+                                if(isset($_SESSION['studentNumber'])){
+                                    echo '<div class="btnCart">';
+                                    echo '<a style="text-decoration:none; color:black" href="Buyer/send_msg.php?id='.$Row['bookID'].'"><p>Message</p></a>';
+                                    echo '</div>';
+                                }
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
                 echo '</section>';
             }
+            
         ?>
         </section>
 

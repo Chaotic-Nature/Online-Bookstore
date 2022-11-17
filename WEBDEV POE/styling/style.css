@@ -147,6 +147,45 @@ nav .fa {
 .modal-contents{
         background-color: #fff;
     }
+#msg-area{
+    padding: 1em;
+    width: 70%;
+    border-radius: 20px;
+    border: 1px solid rgba(160, 206, 203, 0.4);
+    float:left;
+    background-color: rgba(160, 206, 203, 0.4);
+}
+#user_name{
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-bottom:0.5em;
+    font-weight: bold;
+}
+#margin-container{
+    width:95%;
+    margin: 0 auto;
+    padding: 2em 0 2em 0;
+}
+#msg-sent-wrapper{
+    float:left;
+    width: 100%;
+    margin-bottom: 1em;
+    
+}
+#reply-heading{
+    font-size: 16px;
+    
+}
+#TimeBox{
+    padding: 1em 1em 1em 1em;
+    margin: 0 1em 0 1em;
+    border:none;
+    background-color: rgba(160, 206, 203, 0.4);
+    border: 1px solid rgba(160, 206, 203, 0.4);
+    border-radius: 20px;
+}
 
 @media(max-width: 700px) {
     .text-box h1 {
