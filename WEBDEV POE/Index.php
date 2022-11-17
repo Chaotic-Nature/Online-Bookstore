@@ -41,9 +41,31 @@
                                     echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                     echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
                                     echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
+<<<<<<< HEAD
                                     echo '<li> <a href="Buyer/inbox.php?id='. $_SESSION['id'] .'"> <i class="fa-sharp fa-solid fa-envelope"></i> <span id="count">4</span></a> </li>';
                                 
                                 echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">1</span></a> </li>';
+=======
+                                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                                    if ($count = mysqli_num_rows($query)) 
+                                    {
+                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">  '.$count.'</span></i></a></li>';
+                                    }
+                                    else
+                                    {
+                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"<i class="fa-solid fa-envelope"><span class="badge text-bg-secondary">0</span></i></a></li>';
+                                    }
+                                    $query = mysqli_query($DBConn, "SELECT * from tblorders");
+                                    if ($count = mysqli_num_rows($query)) 
+                                    {
+                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">   '.$count.'</span></a> </li>';
+                                    }
+                                    else
+                                    {
+                                        echo '<li> <a href="Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">0</span></a> </li>';
+                                    }
+                                    
+>>>>>>> 0cedd0e7e2d81cc0bbab05aa9079dbdf3b906ec4
                                 }
                                 else{
                                     //when the user is logged out it displays these links//
