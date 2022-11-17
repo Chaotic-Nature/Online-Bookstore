@@ -41,16 +41,17 @@
                                     echo '<li> <a href="#Sale"> Books for sale! </a> </li>';
                                     echo '<li> <a href="#Involved"> Sell your books here! </a> </li>';
                                     echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
-
-                                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
-                                    if ($count1 = mysqli_num_rows($query)) 
-                                    {
-                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count">  '.$count1.'</span></a></li>';
-                                    }
-                                    else
-                                    {
-                                        echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count"> 0</span></a></li>';
-                                    }
+                                    $id = $_SESSION['id'];
+                                    $query = mysqli_query($DBConn, "SELECT * from tbladminmsg WHERE userID= '$id' AND status=1");
+                                        if ($count1 = mysqli_num_rows($query)) 
+                                        {
+                                            echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count">  '.$count1.'</span></a></li>';
+                                        }
+                                        else
+                                        {
+                                            echo '<li><a class="nav-link" href="Buyer/inbox.php?id='. $_SESSION['id'] .'"><i class="fa-solid fa-envelope"></i><span id="count"> 0</span></a></li>';
+                                        }
+                                    
                                     $query = mysqli_query($DBConn, "SELECT * from tblorders");
                                     if ($count2 = mysqli_num_rows($query)) 
                                     {

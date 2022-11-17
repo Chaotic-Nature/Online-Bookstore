@@ -2,27 +2,10 @@
 <?php 
 session_start();
 include_once('../Database_files/DBConn.php');
+
 if(isset($_SESSION['studentNumber'])){
   $id=$_GET['id'];
 
-	$query=mysqli_query($DBConn,"SELECT * from tblBooks where bookID='$id'");
-	$row=mysqli_fetch_array($query);
-}
-
-
-if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $msg = $_POST['msg'];
-    $date = date('y-m-d h:i:s');
-    $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tblmessage(name, msg, cr_date) VALUES('$name', '$msg', '$date')");
-    if($sql_INSERT)
-    {
-        header('location:../Admin/view-messages.php?message=message send successfully"');
-    }
-    else{
-        echo mysqli_error($DBConn);
-        exit;
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -56,7 +39,8 @@ if(isset($_POST['submit'])){
               <li><a href="../Index.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-house"></i></span> Home </a> </li>
               <li> <a href="./send_msg.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-plus"></i></span> Create new </a> </li>
               <?php
-              $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+              $query = mysqli_query($DBConn, "SELECT * from tbladminmsg WHERE userID='$id' AND status=1");
+               if ($total_orders = mysqli_num_rows($query)) {
                 if ($count = mysqli_num_rows($query)) 
                 {
                   echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">'.$count.'</span></a> </li>';
@@ -65,6 +49,7 @@ if(isset($_POST['submit'])){
                 {
                   echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>';
                 }
+              }
               ?>
               
             </ul>
