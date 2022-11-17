@@ -43,7 +43,7 @@
                                     echo '<li> <a href="inc_files/logout.php"> Logout </a> </li>';
                                     echo '<li> <a href="Buyer/inbox.php?id='. $_SESSION['id'] .'"> <i class="fa-sharp fa-solid fa-envelope"></i> <span id="count">4</span></a> </li>';
                                 
-                                echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">4</span></a> </li>';
+                                echo '<li> <a href="./Web_pages/cart.php?id='. $_SESSION['id'] .'"> <i class="fas fa-shopping-cart"></i> <span id="count">1</span></a> </li>';
                                 }
                                 else{
                                     //when the user is logged out it displays these links//
@@ -163,13 +163,17 @@
                                 echo '<br>';
                                 echo '<br>';
                                 echo '<div class="title">Book Title:'.$Row['title'].'</div>';
+                                echo '<div class="title">Author: '. $Row['author'].'</div>';
                                 echo '<div class="price">Price: R'. $Row['price'].'</div>';
-                                echo '<div class="btnCart">';
-                                echo '<p> add to cart </p>';
-                                echo '</div>';
-                                echo '<div class="btnCart">';
-                                echo '<a style="text-decoration:none; color:black" href="Buyer/send_msg.php?id='.$Row['bookID'].'"><p>Message</p></a>';
-                                echo '</div>';
+                                if(isset($_SESSION['studentNumber'])){
+                                    echo '<div class="btnCart">';
+                                    echo '<p> add to cart </p>';
+                                    echo '</div>';
+                                    echo '<div class="btnCart">';
+                                    echo '<a style="text-decoration:none; color:black" href="Buyer/send_msg.php?id='.$Row['bookID'].'"><p>Message</p></a>';
+                                    echo '</div>';
+                                }
+                                
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
@@ -225,7 +229,7 @@
                         </div>
 
                         <div class="file-select">
-                            <label for="Book_image">Select The Book Cover: </label>GIR
+                            <label for="Book_image">Select The Book Cover: </label>
                             <input type="file" name="image" required>
                         </div>
 
