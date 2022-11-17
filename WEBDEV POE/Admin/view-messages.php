@@ -7,10 +7,12 @@ if(isset($_POST['submit'])){
     $date = date('y-m-d h:i:s');
     $status = 1;
     $id = $_POST['id'];
+    $U_status = 3;
     $sql_INSERT = mysqli_query($DBConn, "INSERT INTO tbladminmsg(userID, msg, status, cr_date) VALUES('$id', '$msg', '$status', '$date')");
+    $sql_UPDATE_TBL_USER = mysqli_query($DBConn, "UPDATE tblmessage SET status = 3 WHERE userID = '$id'");
     if($sql_INSERT)
     {
-        header('location:view-messages.php?message=reply sent successfully"');
+        header('location:../Buyer/inbox.php?id=<?php echo '.$id.';?> message=reply sent successfully"');
 
     }
     else{
@@ -89,7 +91,7 @@ if(isset($_POST['submit'])){
 
                     <h1>Messages</h1>
                     <?php
-                    $query = mysqli_query($DBConn, "SELECT * from tblmessage");
+                    $query = mysqli_query($DBConn, "SELECT * from tblmessage WHERE status!=3");
                     if ($total_orders = mysqli_num_rows($query)) {
                         while ($row = mysqli_fetch_array($query)) {
                         ?>

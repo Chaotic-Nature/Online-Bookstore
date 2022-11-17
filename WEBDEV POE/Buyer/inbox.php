@@ -4,7 +4,7 @@ session_start();
 include_once('../Database_files/DBConn.php');
 
 if(isset($_SESSION['studentNumber'])){
-  $id=$_GET['id'];
+  $id=$_SESSION['id'];
 
 }
 ?>
@@ -44,11 +44,11 @@ if(isset($_SESSION['studentNumber'])){
                 if ($count = mysqli_num_rows($query)) 
                 {
                   echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">'.$count.'</span></a> </li>';
-                }
-                else
-                {
-                  echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>';
-                }
+                }               
+              }
+              else
+              {
+                echo '<li> <a href="./inbox.php?id=<?php echo $id;?>"><span><i class="fa-solid fa-inbox"></i></span> Inbox <span id="count">0</span></a> </li>';
               }
               ?>
               
@@ -68,13 +68,45 @@ if(isset($_SESSION['studentNumber'])){
               
               <?php
                 if(isset($_SESSION['studentNumber'])){
-                  $id=$_GET['id'];
-                  $query = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE userID='$id' AND status=1");
-                  if ($total_orders = mysqli_num_rows($query)) {
-                    while (($Row = mysqli_fetch_assoc($query))) {
-                      echo '<div id="wrapper">';
-                      echo '<div class="msg">'.$Row['msg'].'</div>';
-                      echo '<div class="time-sent">'.$Row['cr_date'].'</div>';
+                  $id=$_SESSION['id'];
+                  
+                  $query1 = mysqli_query($DBConn, "SELECT * FROM tblmessage WHERE userID='$id' AND status =3");
+                  $query2 = mysqli_query($DBConn, "SELECT * FROM tbladminmsg WHERE userID='$id' AND status =1 ");
+                  
+                  if ($total_orders1 = mysqli_num_rows($query1) && $total_orders2 = mysqli_num_rows($query2))  {
+                    while (($U_Row = mysqli_fetch_assoc($query1)) && ($AD_Row = mysqli_fetch_assoc($query2))) {
+                      
+                      echo '<div id ="margin-container">';
+                        echo '<div class="user-details">';
+                          echo '<div id="background">';
+                            echo '<div class="input-box">';
+                              echo '<input id="user_name" type="text" name="name" placeholder="name" value="You" readonly>';
+                            echo '</div>';
+                            echo '<div class="input-box">';
+                              echo '<input type="hidden" name="id" placeholder="id" value="'.$U_Row['userID'].'" readonly>';
+                            echo '</div>';
+                            echo '<div id="msg-sent-wrapper">';
+                              echo '<div class="input-box">';
+                                echo '<input id="msg-area" type="text" name="msg" placeholder="message" value="'.$U_Row['msg'].'" readonly></textarea>';
+                              echo '</div>';                                       
+                            echo '<div class="input-box">';
+                              echo '<input id="TimeBox" type="text" name="send_date" placeholder="message" value="'.$U_Row['cr_date'].'" readonly>';
+                            echo '</div>';
+                          echo '</div>';
+                        echo '</div>';
+                         
+                        echo '</div>';
+                        echo '<div id="msg-sent-wrapper">';
+                        echo '<div class="input-box">';
+                          echo '<input id="user_name" type="text" name="name" placeholder="name" value="Admin" readonly>';
+                        echo '</div>';
+                          echo '<div class="input-box">';
+                            echo '<input id="msg-area2" type="text" name="msg" placeholder="message" value="'.$AD_Row['msg'].'" readonly></textarea>';
+                          echo '</div>';                                       
+                          echo '<div class="input-box">';
+                            echo '<input id="TimeBox2" type="text" name="send_date" placeholder="message" value="'.$AD_Row['cr_date'].'" readonly>';
+                          echo '</div>';
+                        echo '</div>';
                       echo '</div>';
                     }
                   }

@@ -35,7 +35,7 @@ $userMessageQuery = "CREATE TABLE $tableMessage (
     userID INT NOT NULL REFERENCES tblUser(userID),
     msg VARCHAR(255),
     name VARCHAR (100),
-    status INT(2) DEFAULT(0),
+    status INT(3) DEFAULT(0),
     cr_date DATETIME);"
 ;
 //Admin Reply Message Table

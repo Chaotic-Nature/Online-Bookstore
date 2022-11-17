@@ -155,6 +155,15 @@ nav .fa {
     float:left;
     background-color: rgba(160, 206, 203, 0.4);
 }
+
+#msg-area2{
+    padding: 1em;
+    width: 70%;
+    border-radius: 20px;
+    border: 1px solid rgba(206, 186, 160, 0.4);
+    float:left;
+    background-color: rgba(206, 186, 160, 0.4);
+}
 #user_name{
     text-decoration: none;
     border: none;
@@ -173,6 +182,7 @@ nav .fa {
     width: 100%;
     margin-bottom: 1em;
     
+    
 }
 #reply-heading{
     font-size: 16px;
@@ -184,6 +194,14 @@ nav .fa {
     border:none;
     background-color: rgba(160, 206, 203, 0.4);
     border: 1px solid rgba(160, 206, 203, 0.4);
+    border-radius: 20px;
+}
+#TimeBox2{
+    padding: 1em 1em 1em 1em;
+    margin: 0 1em 0 1em;
+    border:none;
+    background-color: rgba(206, 186, 160, 0.4);
+    background-color: rgba(206, 186, 160, 0.4);
     border-radius: 20px;
 }
 
